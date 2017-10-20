@@ -1,0 +1,91 @@
+{
+    "name": "Career.exchange",
+    "description": "Jobs and AI",
+    "type": "project",
+    "require": {
+        "php": ">=7.0.0",
+        "aws/aws-sdk-php": "~3.0",
+        "barryvdh/laravel-elfinder": "^0.3.10",
+        "bileto/omnipay-payu": "~0.6.0",
+        "chriskonnertz/open-graph": "dev-master",
+        "cocur/slugify": "^2.3",
+        "collizo4sky/omnipay-2checkout": "^1.5",
+        "creativeorange/gravatar": "~1.0",
+        "cviebrock/eloquent-sluggable": "^4.0",
+        "graham-campbell/flysystem": "^4.0.0",
+        "greggilbert/recaptcha": "dev-master",
+        "guzzlehttp/guzzle": "6.*",
+        "ignited/laravel-omnipay": "2.*",
+        "intervention/image": "^2.3",
+        "jaybizzle/crawler-detect": "1.*",
+        "jaybizzle/laravel-crawler-detect": "1.*",
+        "jenssegers/date": "^3.2",
+        "laracasts/flash": "3.0.0",
+        "laracasts/utilities": "^3.0",
+        "laravel-notification-channels/twilio": "^2.0",
+        "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.0",
+        "laravelcollective/html": "^5.3.0",
+        "league/csv": "^8.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/flysystem-rackspace": "~1.0",
+        "livecontrol/eloquent-datatable": "^0.1.5",
+        "mcamara/laravel-localization": "1.2.*",
+        "mews/purifier": "~2.0",
+        "nexmo/client": "@beta",
+        "omnipay/paypal": "*",
+        "omnipay/stripe": "~2.0",
+        "prologue/alerts": "^0.4.0",
+        "propaganistas/laravel-phone": "^2.8",
+        "pulkitjalan/geoip": "2.*",
+        "spatie/laravel-backup": "^3.1",
+        "torann/laravel-meta-tags": "^3.0",
+        "unicodeveloper/laravel-password": "1.0.*",
+        "watson/sitemap": "2.0.*"
+    },
+    "require-dev": {
+      "filp/whoops": "~2.0",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~6.0",
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*"
+    },
+    "autoload": {
+        "files": [
+            "app/Helpers/Functions/core.php",
+            "app/Helpers/Functions/admin.php",
+            "app/Helpers/Functions/wordpress.php",
+            "app/Helpers/Functions/plugin.php"
+        ],
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Larapen\\TextToImage\\": "packages/larapen/texttoimage/src/",
+            "Larapen\\LaravelLocalization\\": "packages/mcamara/laravel-localization/src/",
+            "Larapen\\LaravelMetaTags\\": "packages/torann/laravel-meta-tags/src/",
+            "Larapen\\Admin\\": "packages/larapen/admin/src/",
+            "Larapen\\Elfinder\\": "packages/barryvdh/laravel-elfinder/src/"
+        }
+    },
+    "autoload-dev": {},
+    "scripts": {
+      "post-root-package-install": [
+        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+      ],
+      "post-create-project-cmd": [
+        "@php artisan key:generate"
+      ],
+      "post-autoload-dump": [
+        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+        "@php artisan package:discover"
+      ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
