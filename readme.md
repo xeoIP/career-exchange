@@ -1,3 +1,11 @@
-## Career.exchange
+#Career Exchange - v1
 
-More info on the way
+## Start
+
+    composer install
+
+    php artisan migrate
+
+    php artisan serve
+
+[career.exchange](http://career.exchange)
