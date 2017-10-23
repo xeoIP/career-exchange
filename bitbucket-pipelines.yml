@@ -5,6 +5,7 @@ pipelines:
         script:
           - apt-get update && apt-get install -qy git curl libmcrypt-dev mysql-client
           - docker-php-ext-install mcrypt && docker-php-ext-install pdo_mysql
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
           - composer install
           - export CACHE_DRIVER=redis
           - export SESSION_DRIVER=redis
