@@ -1,9 +1,4 @@
-<a href="https://career.exchange">
-    <img src="https://i.imgur.com/XDjJZyZ.png" alt="Career.Exchange logo" title="Career.Exchange" align="right" />
-</a>
-
-Career Portal
-======================
+[![Career Exchange](https://i.imgur.com/XDjJZyZ.png)](https://career.exchange/)
 
 The repository contains the platform source code for the new career exchange. A curated network with a diverse set of opportunities across a variety of companies, matching you with only those that best meet your unique skills, interests, preferences,  and priorities.*
 
@@ -31,7 +26,7 @@ Coming soon...
 
 ## Links
 
-* [Web site](https://career.exchange/)
+* [Web site](https://career.exchange)
 * [Documentation](https://bitbucket.org/bizpreneur/career-exchange-web/wiki/Home)
 * [Pipelines](https://bitbucket.org/bizpreneur/career-exchange-web/addon/pipelines/home)
 * [Issue tracker](https://bitbucket.org/bizpreneur/career-exchange-web/issues)
