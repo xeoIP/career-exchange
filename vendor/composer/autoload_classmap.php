@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Controllers\\Account\\AccountBaseController' => $baseDir . '/app/Http/Controllers/Account/AccountBaseController.php',
     'App\\Http\\Controllers\\Account\\CloseController' => $baseDir . '/app/Http/Controllers/Account/CloseController.php',
     'App\\Http\\Controllers\\Account\\EditController' => $baseDir . '/app/Http/Controllers/Account/EditController.php',
+    'App\\Http\\Controllers\\Account\\ResumeController' => $baseDir . '/app/Http/Controllers/Account/ResumeController.php',
     'App\\Http\\Controllers\\Account\\MessagesController' => $baseDir . '/app/Http/Controllers/Account/MessagesController.php',
     'App\\Http\\Controllers\\Account\\PostsController' => $baseDir . '/app/Http/Controllers/Account/PostsController.php',
     'App\\Http\\Controllers\\Account\\TransactionsController' => $baseDir . '/app/Http/Controllers/Account/TransactionsController.php',
