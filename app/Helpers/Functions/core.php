@@ -23,6 +23,26 @@ function quote($value)
 }
 
 /**
+ * Check if user is located in the demo's admin panel
+ *
+ * @return bool
+ */
+function isDemoAdmin()
+{
+    return starts_with(getDomain(), config('larapen.core.demo_domain')) &&
+        \Request::segment(1) == config('larapen.admin.route_prefix', 'admin');
+}
+
+/**
+ * Alias of 'isDemoAdmin()'
+ * @return bool
+ */
+function isAdminDemo()
+{
+    return isDemoAdmin();
+}
+
+/**
  * Hide the Email addresses
  *
  * @param $value
@@ -1157,7 +1177,7 @@ function getLoginLabel()
         if (isEnabledField('phone')) {
             $loginLabel = t('Phone');
         } else {
-            $loginLabel = t('Email address');
+            $loginLabel = t('Email');
         }
     }
 
@@ -1339,6 +1359,38 @@ function unitOfLength($countryCode = null)
     }
 
     return $unit;
+}
+
+/**
+ * Get the installed version value
+ *
+ * @return string
+ */
+function getInstalledVersion()
+{
+	$installedVersion = null;
+	$envFilePath = base_path('.env');
+	if (\Illuminate\Support\Facades\File::exists($envFilePath)) {
+		$configString = \Illuminate\Support\Facades\File::get($envFilePath);
+		$tmp = [];
+		preg_match('/APP_VERSION=(.*)[^\n]*/', $configString, $tmp);
+		if (isset($tmp[1]) && trim($tmp[1]) != '') {
+			$installedVersion = trim($tmp[1]);
+		}
+	}
+
+	// Forget the subversion number
+	if (!empty($installedVersion)) {
+		$tmp = explode('.', $installedVersion);
+		if (count($tmp) > 1) {
+			if (count($tmp) >= 3) {
+				$tmp = array_only($tmp, [0, 1]);
+			}
+			$installedVersion = implode('.', $tmp);
+		}
+	}
+
+	return $installedVersion;
 }
 
 /**

@@ -26,8 +26,8 @@ return array(
     'cb61d74ad51d00867155534456b38b23' => $vendorDir . '/mews/purifier/src/helpers.php',
     '0c3c22e27afa83be19b4c938f4c6e9ea' => $vendorDir . '/spatie/laravel-backup/src/Helpers/functions.php',
     '6292c1671f9440c89e0af20a0f78754a' => $vendorDir . '/laracasts/utilities/src/helpers.php',
-    'eaf0099f65caefd42cff7075cc7f6002' => $baseDir . '/app/Helpers/Functions/core.php',
-    '3db952689583ca53abf343475c8942df' => $baseDir . '/app/Helpers/Functions/admin.php',
-    'e2f8bfab65b2ed8f61a79e827ca72143' => $baseDir . '/app/Helpers/Functions/wordpress.php',
-    '6fea21a92cfb204e02f588c887300da2' => $baseDir . '/app/Helpers/Functions/plugin.php',
+    '39a2302470d5c950cfef99b9a051bd7a' => $baseDir . '/app/Helpers/Functions/core.php',
+    'c1920e97da05334242dc920f7bd579c1' => $baseDir . '/app/Helpers/Functions/admin.php',
+    'e5c6829cc0bd4b7548f4de002fe50a14' => $baseDir . '/app/Helpers/Functions/wordpress.php',
+    'f68bcf5be99ebd5c5c90b9bcca112b07' => $baseDir . '/app/Helpers/Functions/plugin.php',
 );
