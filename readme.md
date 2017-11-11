@@ -1,8 +1,8 @@
-[![Career Exchange](https://i.imgur.com/XDjJZyZ.png)](https://career.exchange/)
+[![Career Exchange](https://i.imgur.com/mXOJVSy.png)](https://career.exchange/)
 
 The repository contains the platform source code for the new career exchange. A curated network with a diverse set of opportunities across a variety of companies, matching you with only those that best meet your unique skills, interests, preferences,  and priorities.*
 
-[![Career Exchange](https://i.imgur.com/AoytKbQ.png)](https://career.exchange/)
+[![Career Exchange](https://i.imgur.com/iSZg7j9.png)](https://career.exchange/)
 
 ## Table of contents
 
