@@ -47,9 +47,9 @@
 								<h3 class="no-padding text-center-480 useradmin">
 									<a href="">
 										@if (!empty($gravatar))
-											<img class="userImg" src="{{ $gravatar }}" alt="user">&nbsp;
+											<img class="user-image" src="{{ $gravatar }}" alt="user">&nbsp;
 										@else
-											<img class="userImg" src="{{ url('images/user.jpg') }}" alt="user">
+											<img class="user-image" src="{{ url('images/user.jpg') }}" alt="user">
 										@endif
 										{{ $user->name }}
 									</a>
@@ -105,7 +105,7 @@
 										<div class="mcol-right">
 											<!-- Number of favorites -->
 											<p>
-												<a href="{{ lurl('account/favourite') }}">
+												<a href="{{ lurl('account/favorite') }}">
                                                     {{ $countFavoritePosts }}
 												    <em>{{ trans_choice('global.count_favorites', getPlural($countFavoritePosts)) }} </em>
                                                 </a>
@@ -273,7 +273,7 @@
 											<!-- Button -->
 											<div class="form-group">
 												<div class="col-sm-offset-3 col-sm-9">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+													<button type="submit" class="button">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
@@ -324,7 +324,7 @@
 											<!-- Button -->
 											<div class="form-group">
 												<div class="col-sm-offset-3 col-sm-9">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+													<button type="submit" class="button">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>

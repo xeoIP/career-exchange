@@ -12,9 +12,14 @@
                         <ul class="acc-list">
                             <li>
                                 <a {!! ($pagePath=='') ? 'class="active"' : '' !!} href="{{ lurl('account') }}">
-                                    <i class="icon-home"></i> {{ t('Personal Home') }}
+                                    <i class="fa fa-home"></i> {{ t('Personal Home') }}
                                 </a>
 																</li>
+																<li>
+																		<a {!! ($pagePath=='') ? 'class="active"' : '' !!} href="{{ lurl('account/resume') }}">
+																				<i class="fa fa-file-text-o"></i> {{ t('Resume') }}
+																		</a>
+																		</li>
                         </ul>
                     </div>
                 </div>
@@ -62,9 +67,9 @@
                                 @endif
                                 @if (in_array($user->user_type_id, [1, 3]))
                                     <li>
-                                        <a{!! ($pagePath=='favourite') ? ' class="active"' : '' !!} href="{{ lurl('account/favourite') }}">
-                                        <i class="icon-heart"></i> {{ t('Favourite jobs') }}&nbsp;
-                                        <span class="badge">{{ isset($countFavouritePosts) ? $countFavouritePosts : 0 }}</span>
+                                        <a{!! ($pagePath=='favorite') ? ' class="active"' : '' !!} href="{{ lurl('account/favorite') }}">
+                                        <i class="icon-heart"></i> {{ t('Favorite jobs') }}&nbsp;
+                                        <span class="badge">{{ isset($countFavoritePosts) ? $countFavoritePosts : 0 }}</span>
                                         </a>
                                     </li>
                                     <li>
