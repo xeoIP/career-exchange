@@ -105,7 +105,7 @@
 		@endif
 	@show
 
-	@section('search')
+	@section('banner')
 	@show
 
 	@section('wizard')
