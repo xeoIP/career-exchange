@@ -15,7 +15,7 @@
     /*----------------------------------------------------*/
     if($('header').hasClass('full-width')) {
         $('header').attr('data-full', 'yes');
-    }  
+    }
     if($('header').hasClass('alternative')) {
         $('header').attr('data-alt', 'yes');
     }
@@ -103,7 +103,7 @@
     /*  Stacktable / Responsive Tables Plug-in
     /*----------------------------------------------------*/
     $('.responsive-table').stacktable();
-    
+
 
 
     /*----------------------------------------------------*/
@@ -126,7 +126,7 @@
           $('html, body').animate({scrollTop:0}, scrollSpeed);
           return false;
         });
-    
+
 
 
     /*----------------------------------------------------*/
@@ -162,7 +162,7 @@
             delay: 9000,
             startwidth: 1180,
             startheight: 640,
-            onHoverStop: "on", // Stop Banner Timet at Hover on Slide on/off
+            onHoverStop: "on", // Stop Banner Timer at Hover on Slide on/off
             navigationType: "none", //bullet, none
             navigationArrows: "verticalcentered", //nexttobullets, verticalcentered, none
             navigationStyle: "none", //round, square, navbar, none
@@ -216,7 +216,7 @@
 
     /*----------------------------------------------------*/
     /*  Checkboxes "any" fix
-    /*----------------------------------------------------*/   
+    /*----------------------------------------------------*/
         $('.checkboxes').find('input:first').addClass('first');
         $('.checkboxes input').on('change', function() {
             if($(this).hasClass('first')){
@@ -230,8 +230,8 @@
 
     /*----------------------------------------------------*/
     /*  Magnific Popup
-    /*----------------------------------------------------*/   
-        
+    /*----------------------------------------------------*/
+
             $('body').magnificPopup({
                 type: 'image',
                 delegate: 'a.mfp-gallery',
@@ -392,11 +392,11 @@
              e.preventDefault();
         });
 
-    
+
 
     /*----------------------------------------------------*/
     /*  Application Tabs
-    /*----------------------------------------------------*/   
+    /*----------------------------------------------------*/
         // Get all the links.
         var link = $(".app-link");
         $('.close-tab').hide();
@@ -420,7 +420,7 @@
             }
 
             $(this).parents('div.application').find(".app-tabs div.app-tab-content").not(a).slideUp('fast').addClass('closed').removeClass('opened');
-            
+
         });
 
         $('.close-tab').on('click',function(e){
@@ -432,8 +432,8 @@
 
 
     /*----------------------------------------------------*/
-    /*  Add Resume 
-    /*----------------------------------------------------*/   
+    /*  Add Resume
+    /*----------------------------------------------------*/
         $('.box-to-clone').hide();
         $('.add-box').on('click', function(e) {
             e.preventDefault();
@@ -441,7 +441,7 @@
             newElem.find('input').val('');
             newElem.prependTo($(this).parent()).show();
             var height = $(this).prev('.box-to-clone').outerHeight(true);
-            
+
             $("html, body").stop().animate({ scrollTop: $(this).offset().top-height}, 600);
         });
 
@@ -454,8 +454,8 @@
 
     /*----------------------------------------------------*/
     /*  Tabs
-    /*----------------------------------------------------*/ 
-  
+    /*----------------------------------------------------*/
+
 
         var $tabsNav    = $('.tabs-nav'),
         $tabsNavLis = $tabsNav.children('li');
@@ -502,7 +502,7 @@
 
         // flying out and fading for header content
         $(headerElem).css({  'transform': 'translateY(' + (  $(window).scrollTop() / -9 ) + 'px)', });
-        // $(headerElem).css({ 'opacity': 1 - $(window).scrollTop() / 600 });  
+        // $(headerElem).css({ 'opacity': 1 - $(window).scrollTop() / 600 });
     });
 
 
@@ -598,7 +598,8 @@
                 top = top - overflowH;
                 bottom = bottom + overflowH;
                 // value with linear interpolation
-                var value = -100 + min + (max - min) * (currentWindow - top) / (bottom - top);
+                //var value = -100 + min + (max - min) * (currentWindow - top) / (bottom - top);
+                var value = -50 + min + (max - min) * (currentWindow - top) / (bottom - top);
                 // set background-position
                 var orizontalPosition = path.attr("data-oriz-pos");
                 orizontalPosition = orizontalPosition ? orizontalPosition : "50%";
@@ -616,10 +617,10 @@
 
 
     /*----------------------------------------------------*/
-    /*  Sticky Header 
+    /*  Sticky Header
     /*----------------------------------------------------*/
     $( ".sticky-header" ).clone(true).addClass('cloned').insertAfter(".sticky-header");
-    $(".sticky-header.cloned.transparent #logo a img").attr("src", "images/logo.png");
+    $(".sticky-header.cloned.transparent #logo a img").attr("src", "images/logo-1.png");
     $(".sticky-header.cloned.alternative").removeClass('alternative');
 
     var stickyHeader = document.querySelector(".sticky-header.cloned");
@@ -650,7 +651,6 @@
 
 })(this.jQuery);
 
-  
 /*
  * jQuery Superfish Menu Plugin
  * Copyright (c) 2013 Joel Birch

@@ -210,7 +210,6 @@
 	a:hover { color: #666; }
 	p a, p a:visited { line-height: inherit; }
 
-
 /* #Lists
 ================================================== */
 	ul, ol { margin: 0; }
@@ -252,6 +251,11 @@
 		font-weight: 500;
 		border: 1px solid #e0e0e0;
 		opacity: 1;
+		height: 100%;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		-webkit-transition: none;
+		transition: none;
 	}
 
 	select { padding: 0; }

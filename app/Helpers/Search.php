@@ -178,7 +178,7 @@ class Search
         $count = $this->countPosts();
         $sql = $this->builder() . "\n" . "LIMIT " . (int)$this->sqlCurrLimit . ", " . (int)$this->perPage;
 
-        // Count real query ads (Input::get('type') is an array in JobClass)
+        // Count real query ads (Input::get('type') is an array in CareerExchange)
         $total = $count->get('all');
 
         // Fetch Query !

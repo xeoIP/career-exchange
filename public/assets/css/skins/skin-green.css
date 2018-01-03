@@ -41,7 +41,7 @@ a.button.dark:hover,
 .checkboxes input[type=checkbox]:checked + label:before
 { background-color: #26ae61; }
 
-
+a.link { color: #26ae61; }
 
 a,
 table td.title a:hover,
