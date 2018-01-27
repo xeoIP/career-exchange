@@ -41,6 +41,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  * @property array links
+ * @property string ipAddress
  */
 class SimInstance extends InstanceResource {
     protected $_usageRecords = null;
@@ -81,11 +82,10 @@ class SimInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'ipAddress' => Values::array_get($payload, 'ip_address'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**
@@ -96,10 +96,7 @@ class SimInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new SimContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new SimContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -121,9 +118,7 @@ class SimInstance extends InstanceResource {
      * @return SimInstance Updated SimInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

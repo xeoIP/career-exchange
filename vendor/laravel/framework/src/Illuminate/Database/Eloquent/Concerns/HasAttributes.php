@@ -314,7 +314,7 @@ trait HasAttributes
         }
 
         // Here we will determine if the model base class itself contains this given key
-        // since we do not want to treat any of those methods are relationships since
+        // since we don't want to treat any of those methods as relationships because
         // they are all intended as helper methods and none of these are relations.
         if (method_exists(self::class, $key)) {
             return;
@@ -712,7 +712,7 @@ trait HasAttributes
         // the database connection and use that format to create the Carbon object
         // that is returned back out to the developers after we convert it here.
         return Carbon::createFromFormat(
-            $this->getDateFormat(), $value
+            str_replace('.v', '.u', $this->getDateFormat()), $value
         );
     }
 
@@ -735,7 +735,7 @@ trait HasAttributes
      */
     public function fromDateTime($value)
     {
-        return is_null($value) ? $value : $this->asDateTime($value)->format(
+        return empty($value) ? $value : $this->asDateTime($value)->format(
             $this->getDateFormat()
         );
     }
@@ -1029,7 +1029,7 @@ trait HasAttributes
     }
 
     /**
-     * Get the attributes that was changed.
+     * Get the attributes that were changed.
      *
      * @return array
      */

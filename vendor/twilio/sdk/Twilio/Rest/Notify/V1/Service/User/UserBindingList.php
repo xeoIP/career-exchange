@@ -31,10 +31,7 @@ class UserBindingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'identity' => $identity,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'identity' => $identity, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($identity) . '/Bindings';
     }
@@ -53,7 +50,7 @@ class UserBindingList extends ListResource {
         $data = Values::of(array(
             'BindingType' => $bindingType,
             'Address' => $address,
-            'Tag' => $options['tag'],
+            'Tag' => Serialize::map($options['tag'], function($e) { return $e; }),
             'NotificationProtocolVersion' => $options['notificationProtocolVersion'],
             'CredentialSid' => $options['credentialSid'],
             'Endpoint' => $options['endpoint'],
@@ -136,7 +133,7 @@ class UserBindingList extends ListResource {
         $params = Values::of(array(
             'StartDate' => Serialize::iso8601Date($options['startDate']),
             'EndDate' => Serialize::iso8601Date($options['endDate']),
-            'Tag' => $options['tag'],
+            'Tag' => Serialize::map($options['tag'], function($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

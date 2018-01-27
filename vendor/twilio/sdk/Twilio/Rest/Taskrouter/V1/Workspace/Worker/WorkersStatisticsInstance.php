@@ -16,9 +16,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property array cumulative
  * @property array realtime
+ * @property array cumulative
+ * @property string accountSid
  * @property string workspaceSid
  * @property string url
  */
@@ -36,16 +36,14 @@ class WorkersStatisticsInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'cumulative' => Values::array_get($payload, 'cumulative'),
             'realtime' => Values::array_get($payload, 'realtime'),
+            'cumulative' => Values::array_get($payload, 'cumulative'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, );
     }
 
     /**
@@ -56,10 +54,7 @@ class WorkersStatisticsInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new WorkersStatisticsContext(
-                $this->version,
-                $this->solution['workspaceSid']
-            );
+            $this->context = new WorkersStatisticsContext($this->version, $this->solution['workspaceSid']);
         }
 
         return $this->context;
@@ -72,9 +67,7 @@ class WorkersStatisticsInstance extends InstanceResource {
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      */
     public function fetch($options = array()) {
-        return $this->proxy()->fetch(
-            $options
-        );
+        return $this->proxy()->fetch($options);
     }
 
     /**

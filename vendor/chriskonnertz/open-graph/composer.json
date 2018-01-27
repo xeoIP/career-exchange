@@ -1,7 +1,7 @@
 {
     "name": "chriskonnertz/open-graph",
     "description": "Class that assists in building Open Graph meta tags",
-    "keywords": ["opengraph", "open graph", "laravel", "laravel4", "laravel5"],
+    "keywords": ["opengraph", "open graph", "ogp", "laravel", "laravel4", "laravel5"],
     "license": "MIT",
     "authors": [
         {
@@ -17,6 +17,16 @@
     "autoload": {
         "psr-0": {
             "ChrisKonnertz\\OpenGraph": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ChrisKonnertz\\OpenGraph\\OpenGraphServiceProvider"
+            ],
+            "aliases": {
+                "OpenGraph": "ChrisKonnertz\\OpenGraph\\OpenGraphFacade"
+            }
         }
     },
     "minimum-stability": "dev"

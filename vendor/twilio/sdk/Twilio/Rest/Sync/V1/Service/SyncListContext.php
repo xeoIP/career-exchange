@@ -11,6 +11,7 @@ namespace Twilio\Rest\Sync\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemList;
 use Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionList;
 use Twilio\Values;
@@ -40,10 +41,7 @@ class SyncListContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($sid) . '';
     }
@@ -77,6 +75,32 @@ class SyncListContext extends InstanceContext {
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Update the SyncListInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return SyncListInstance Updated SyncListInstance
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Ttl' => $options['ttl'], ));
+
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new SyncListInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid']
+        );
     }
 
     /**

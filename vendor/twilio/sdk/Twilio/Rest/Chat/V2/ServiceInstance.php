@@ -34,6 +34,8 @@ use Twilio\Version;
  * @property string postWebhookUrl
  * @property string webhookMethod
  * @property string webhookFilters
+ * @property integer preWebhookRetryCount
+ * @property integer postWebhookRetryCount
  * @property array notifications
  * @property array media
  * @property string url
@@ -43,6 +45,7 @@ class ServiceInstance extends InstanceResource {
     protected $_channels = null;
     protected $_roles = null;
     protected $_users = null;
+    protected $_bindings = null;
 
     /**
      * Initialize the ServiceInstance
@@ -74,15 +77,15 @@ class ServiceInstance extends InstanceResource {
             'postWebhookUrl' => Values::array_get($payload, 'post_webhook_url'),
             'webhookMethod' => Values::array_get($payload, 'webhook_method'),
             'webhookFilters' => Values::array_get($payload, 'webhook_filters'),
+            'preWebhookRetryCount' => Values::array_get($payload, 'pre_webhook_retry_count'),
+            'postWebhookRetryCount' => Values::array_get($payload, 'post_webhook_retry_count'),
             'notifications' => Values::array_get($payload, 'notifications'),
             'media' => Values::array_get($payload, 'media'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**
@@ -93,10 +96,7 @@ class ServiceInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new ServiceContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new ServiceContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -127,9 +127,7 @@ class ServiceInstance extends InstanceResource {
      * @return ServiceInstance Updated ServiceInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**
@@ -157,6 +155,15 @@ class ServiceInstance extends InstanceResource {
      */
     protected function getUsers() {
         return $this->proxy()->users;
+    }
+
+    /**
+     * Access the bindings
+     * 
+     * @return \Twilio\Rest\Chat\V2\Service\BindingList 
+     */
+    protected function getBindings() {
+        return $this->proxy()->bindings;
     }
 
     /**

@@ -29,10 +29,7 @@ class ParticipantList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'conferenceSid' => $conferenceSid,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'conferenceSid' => $conferenceSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants.json';
     }
@@ -53,7 +50,7 @@ class ParticipantList extends ListResource {
             'To' => $to,
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'StatusCallbackEvent' => $options['statusCallbackEvent'],
+            'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
             'Timeout' => $options['timeout'],
             'Record' => Serialize::booleanToString($options['record']),
             'Muted' => Serialize::booleanToString($options['muted']),
@@ -68,7 +65,7 @@ class ParticipantList extends ListResource {
             'ConferenceTrim' => $options['conferenceTrim'],
             'ConferenceStatusCallback' => $options['conferenceStatusCallback'],
             'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
-            'ConferenceStatusCallbackEvent' => $options['conferenceStatusCallbackEvent'],
+            'ConferenceStatusCallbackEvent' => Serialize::map($options['conferenceStatusCallbackEvent'], function($e) { return $e; }),
             'RecordingChannels' => $options['recordingChannels'],
             'RecordingStatusCallback' => $options['recordingStatusCallback'],
             'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
@@ -77,6 +74,8 @@ class ParticipantList extends ListResource {
             'Region' => $options['region'],
             'ConferenceRecordingStatusCallback' => $options['conferenceRecordingStatusCallback'],
             'ConferenceRecordingStatusCallbackMethod' => $options['conferenceRecordingStatusCallbackMethod'],
+            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
+            'ConferenceRecordingStatusCallbackEvent' => Serialize::map($options['conferenceRecordingStatusCallbackEvent'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

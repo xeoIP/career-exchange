@@ -61,7 +61,7 @@ return array (
   ),
   'tollFree' => 
   array (
-    'NationalNumberPattern' => '80(?:0(?:1111|\\d{6,7})|8\\d{7})|500\\d{6}',
+    'NationalNumberPattern' => '80(?:0(?:1111|\\d{6,7})|8\\d{7})',
     'ExampleNumber' => '8001234567',
     'PossibleLength' => 
     array (
@@ -203,7 +203,7 @@ return array (
       'format' => '$1 $2 $3',
       'leadingDigitsPatterns' => 
       array (
-        0 => '1(?:1|\\d1)|3|9[018]',
+        0 => '1(?:[02-9]1|1)|3|9[018]',
       ),
       'nationalPrefixFormattingRule' => '0$1',
       'domesticCarrierCodeFormattingRule' => '',
@@ -216,8 +216,8 @@ return array (
       'leadingDigitsPatterns' => 
       array (
         0 => '1(?:38|5[23]|69|76|94)',
-        1 => '1(?:387|5(?:24|39)|697|768|946)',
-        2 => '1(?:3873|5(?:242|39[456])|697[347]|768[347]|9467)',
+        1 => '1(?:(?:38|69)7|5(?:24|39)|768|946)',
+        2 => '1(?:3873|5(?:242|39[4-6])|(?:697|768)[347]|9467)',
       ),
       'nationalPrefixFormattingRule' => '0$1',
       'domesticCarrierCodeFormattingRule' => '',
@@ -292,11 +292,11 @@ return array (
     ),
     9 => 
     array (
-      'pattern' => '([58]00)(\\d{6})',
+      'pattern' => '(800)(\\d{6})',
       'format' => '$1 $2',
       'leadingDigitsPatterns' => 
       array (
-        0 => '[58]00',
+        0 => '800',
       ),
       'nationalPrefixFormattingRule' => '0$1',
       'domesticCarrierCodeFormattingRule' => '',

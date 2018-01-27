@@ -148,6 +148,7 @@ class FaxList extends ListResource {
             'SipAuthUsername' => $options['sipAuthUsername'],
             'SipAuthPassword' => $options['sipAuthPassword'],
             'StoreMedia' => Serialize::booleanToString($options['storeMedia']),
+            'Ttl' => $options['ttl'],
         ));
 
         $payload = $this->version->create(
@@ -157,10 +158,7 @@ class FaxList extends ListResource {
             $data
         );
 
-        return new FaxInstance(
-            $this->version,
-            $payload
-        );
+        return new FaxInstance($this->version, $payload);
     }
 
     /**
@@ -170,10 +168,7 @@ class FaxList extends ListResource {
      * @return \Twilio\Rest\Fax\V1\FaxContext 
      */
     public function getContext($sid) {
-        return new FaxContext(
-            $this->version,
-            $sid
-        );
+        return new FaxContext($this->version, $sid);
     }
 
     /**

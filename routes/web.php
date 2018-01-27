@@ -214,3 +214,62 @@ Route::group([
         Route::get(LaravelLocalization::transRoute('routes.search-cat'), 'Search\CategoryController@index');
     });
 });
+
+/*
+|--------------------------------------------------------------------------
+| Back-end
+|--------------------------------------------------------------------------
+|
+| The admin panel routes
+|
+*/
+Route::group([
+    'middleware' => ['admin', 'bannedUser', 'installChecker', 'preventBackHistory'],
+    'prefix'     => config('larapen.admin.route_prefix', 'admin'),
+    'namespace'  => 'App\Http\Controllers\Admin',
+], function() {
+    // CRUD
+    CRUD::resource('advertising', 'AdvertisingController');
+    CRUD::resource('blacklist', 'BlacklistController');
+    CRUD::resource('category', 'CategoryController');
+    CRUD::resource('category/{catId}/sub_category', 'SubCategoryController');
+    CRUD::resource('city', 'CityController');
+    CRUD::resource('country', 'CountryController');
+    CRUD::resource('country/{countryCode}/city', 'CityController');
+    CRUD::resource('country/{countryCode}/loc_admin1', 'SubAdmin1Controller');
+    CRUD::resource('currency', 'CurrencyController');
+    CRUD::resource('gender', 'GenderController');
+    CRUD::resource('home_section', 'HomeSectionController');
+    CRUD::resource('loc_admin1/{admin1Code}/city', 'CityController');
+    CRUD::resource('loc_admin1/{admin1Code}/loc_admin2', 'SubAdmin2Controller');
+    CRUD::resource('loc_admin2/{admin2Code}/city', 'CityController');
+    CRUD::resource('meta_tag', 'MetaTagController');
+    CRUD::resource('package', 'PackageController');
+    CRUD::resource('page', 'PageController');
+    CRUD::resource('payment', 'PaymentController');
+    CRUD::resource('payment_method', 'PaymentMethodController');
+    CRUD::resource('picture', 'PictureController');
+    CRUD::resource('post', 'PostController');
+    CRUD::resource('p_type', 'PostTypeController');
+    CRUD::resource('report_type', 'ReportTypeController');
+    CRUD::resource('salary_type', 'SalaryTypeController');
+    CRUD::resource('time_zone', 'TimeZoneController');
+    CRUD::resource('user', 'UserController');
+
+    // Others
+    Route::get('account', 'UserController@account');
+    Route::post('ajax/{table}/{field}', 'AjaxController@saveAjaxRequest');
+    Route::get('clear_cache', 'CacheController@clear');
+
+    // Re-send Email or Phone verification message
+    Route::get('verify/user/{id}/resend/email', 'UserController@reSendVerificationEmail');
+    Route::get('verify/user/{id}/resend/sms', 'UserController@reSendVerificationSms');
+    Route::get('verify/post/{id}/resend/email', 'PostController@reSendVerificationEmail');
+    Route::get('verify/post/{id}/resend/sms', 'PostController@reSendVerificationSms');
+
+    // Plugins
+    Route::get('plugin', 'PluginController@index');
+    Route::get('plugin/{plugin}/install', 'PluginController@install');
+    Route::get('plugin/{plugin}/uninstall', 'PluginController@uninstall');
+    Route::get('plugin/{plugin}/delete', 'PluginController@delete');
+});

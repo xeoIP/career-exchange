@@ -30,9 +30,7 @@ class NotificationList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Notifications';
     }
@@ -47,23 +45,23 @@ class NotificationList extends ListResource {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'Identity' => $options['identity'],
-            'Tag' => $options['tag'],
+            'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
+            'Tag' => Serialize::map($options['tag'], function($e) { return $e; }),
             'Body' => $options['body'],
             'Priority' => $options['priority'],
             'Ttl' => $options['ttl'],
             'Title' => $options['title'],
             'Sound' => $options['sound'],
             'Action' => $options['action'],
-            'Data' => $options['data'],
-            'Apn' => $options['apn'],
-            'Gcm' => $options['gcm'],
-            'Sms' => $options['sms'],
-            'FacebookMessenger' => Serialize::json_object($options['facebookMessenger']),
-            'Fcm' => $options['fcm'],
-            'Segment' => $options['segment'],
-            'Alexa' => $options['alexa'],
-            'ToBinding' => $options['toBinding'],
+            'Data' => Serialize::jsonObject($options['data']),
+            'Apn' => Serialize::jsonObject($options['apn']),
+            'Gcm' => Serialize::jsonObject($options['gcm']),
+            'Sms' => Serialize::jsonObject($options['sms']),
+            'FacebookMessenger' => Serialize::jsonObject($options['facebookMessenger']),
+            'Fcm' => Serialize::jsonObject($options['fcm']),
+            'Segment' => Serialize::map($options['segment'], function($e) { return $e; }),
+            'Alexa' => Serialize::jsonObject($options['alexa']),
+            'ToBinding' => Serialize::map($options['toBinding'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(
@@ -73,11 +71,7 @@ class NotificationList extends ListResource {
             $data
         );
 
-        return new NotificationInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new NotificationInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

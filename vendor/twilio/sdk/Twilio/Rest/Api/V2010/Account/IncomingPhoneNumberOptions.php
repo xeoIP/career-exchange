@@ -39,10 +39,14 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $emergencyAddressSid The emergency_address_sid
      * @param string $trunkSid Unique string to identify the trunk
      * @param string $voiceReceiveMode The voice_receive_mode
+     * @param string $identitySid Unique string that identifies the identity
+     *                            associated with number
+     * @param string $addressSid Unique string that identifies the address
+     *                           associated with number
      * @return UpdateIncomingPhoneNumberOptions Options builder
      */
-    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
-        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $voiceReceiveMode);
+    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
+        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $voiceReceiveMode, $identitySid, $addressSid);
     }
 
     /**
@@ -82,10 +86,14 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $emergencyStatus The emergency_status
      * @param string $emergencyAddressSid The emergency_address_sid
      * @param string $trunkSid Unique string to identify the trunk
+     * @param string $identitySid Unique string that identifies the identity
+     *                            associated with number
+     * @param string $addressSid Unique string that identifies the address
+     *                           associated with number
      * @return CreateIncomingPhoneNumberOptions Options builder
      */
-    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE) {
-        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid);
+    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
+        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $identitySid, $addressSid);
     }
 }
 
@@ -116,8 +124,12 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      * @param string $emergencyAddressSid The emergency_address_sid
      * @param string $trunkSid Unique string to identify the trunk
      * @param string $voiceReceiveMode The voice_receive_mode
+     * @param string $identitySid Unique string that identifies the identity
+     *                            associated with number
+     * @param string $addressSid Unique string that identifies the address
+     *                           associated with number
      */
-    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
+    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;
@@ -138,10 +150,12 @@ class UpdateIncomingPhoneNumberOptions extends Options {
         $this->options['emergencyAddressSid'] = $emergencyAddressSid;
         $this->options['trunkSid'] = $trunkSid;
         $this->options['voiceReceiveMode'] = $voiceReceiveMode;
+        $this->options['identitySid'] = $identitySid;
+        $this->options['addressSid'] = $addressSid;
     }
 
     /**
-     * The unique id of the Account to which you wish to transfer this phnoe number
+     * The unique id of the Account to which you wish to transfer this phone number
      * 
      * @param string $accountSid The new owner of the phone number
      * @return $this Fluent Builder
@@ -366,6 +380,30 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
+     * The 34 character sid of the identity Twilio should use to associate with the number. Identities are required in some regions to meet local regulations
+     * 
+     * @param string $identitySid Unique string that identifies the identity
+     *                            associated with number
+     * @return $this Fluent Builder
+     */
+    public function setIdentitySid($identitySid) {
+        $this->options['identitySid'] = $identitySid;
+        return $this;
+    }
+
+    /**
+     * The 34 character sid of the address Twilio should use to associate with the number. Addresses are required in some regions to meet local regulations
+     * 
+     * @param string $addressSid Unique string that identifies the address
+     *                           associated with number
+     * @return $this Fluent Builder
+     */
+    public function setAddressSid($addressSid) {
+        $this->options['addressSid'] = $addressSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -482,8 +520,12 @@ class CreateIncomingPhoneNumberOptions extends Options {
      * @param string $emergencyStatus The emergency_status
      * @param string $emergencyAddressSid The emergency_address_sid
      * @param string $trunkSid Unique string to identify the trunk
+     * @param string $identitySid Unique string that identifies the identity
+     *                            associated with number
+     * @param string $addressSid Unique string that identifies the address
+     *                           associated with number
      */
-    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE) {
+    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['areaCode'] = $areaCode;
         $this->options['apiVersion'] = $apiVersion;
@@ -504,6 +546,8 @@ class CreateIncomingPhoneNumberOptions extends Options {
         $this->options['emergencyStatus'] = $emergencyStatus;
         $this->options['emergencyAddressSid'] = $emergencyAddressSid;
         $this->options['trunkSid'] = $trunkSid;
+        $this->options['identitySid'] = $identitySid;
+        $this->options['addressSid'] = $addressSid;
     }
 
     /**
@@ -728,6 +772,30 @@ class CreateIncomingPhoneNumberOptions extends Options {
      */
     public function setTrunkSid($trunkSid) {
         $this->options['trunkSid'] = $trunkSid;
+        return $this;
+    }
+
+    /**
+     * The 34 character sid of the identity Twilio should use to associate with the number. Identities are required in some regions to meet local regulations
+     * 
+     * @param string $identitySid Unique string that identifies the identity
+     *                            associated with number
+     * @return $this Fluent Builder
+     */
+    public function setIdentitySid($identitySid) {
+        $this->options['identitySid'] = $identitySid;
+        return $this;
+    }
+
+    /**
+     * The 34 character sid of the address Twilio should use to associate with the number. Addresses are required in some regions to meet local regulations
+     * 
+     * @param string $addressSid Unique string that identifies the address
+     *                           associated with number
+     * @return $this Fluent Builder
+     */
+    public function setAddressSid($addressSid) {
+        $this->options['addressSid'] = $addressSid;
         return $this;
     }
 

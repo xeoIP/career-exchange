@@ -27,9 +27,7 @@ class WorkersStatisticsContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, );
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/Statistics';
     }
@@ -50,6 +48,7 @@ class WorkersStatisticsContext extends InstanceContext {
             'TaskQueueSid' => $options['taskQueueSid'],
             'TaskQueueName' => $options['taskQueueName'],
             'FriendlyName' => $options['friendlyName'],
+            'TaskChannel' => $options['taskChannel'],
         ));
 
         $payload = $this->version->fetch(
@@ -58,11 +57,7 @@ class WorkersStatisticsContext extends InstanceContext {
             $params
         );
 
-        return new WorkersStatisticsInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new WorkersStatisticsInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

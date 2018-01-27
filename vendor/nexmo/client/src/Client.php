@@ -38,7 +38,7 @@ use Zend\Diactoros\Request;
  */
 class Client
 {
-    const VERSION = '1.0.0-beta1';
+    const VERSION = '1.2.0';
 
     const BASE_API  = 'https://api.nexmo.com';
     const BASE_REST = 'https://rest.nexmo.com';
@@ -85,12 +85,20 @@ class Client
 
         $this->options = $options;
 
+        // If they've provided an app name, validate it
+        if (isset($options['app'])) {
+            $this->validateAppOptions($options['app']);
+        }
+
         $this->setFactory(new MapFactory([
+            'account' => 'Nexmo\Account\Client',
+            'insights' => 'Nexmo\Insights\Client',
             'message' => 'Nexmo\Message\Client',
             'verify'  => 'Nexmo\Verify\Client',
             'applications' => 'Nexmo\Application\Client',
             'numbers' => 'Nexmo\Numbers\Client',
             'calls' => 'Nexmo\Call\Collection',
+            'conversion' => 'Nexmo\Conversion\Client',
         ], $this));
     }
 
@@ -248,6 +256,26 @@ class Client
     }
 
     /**
+     * Takes a URL and a key=>value array to generate a POST PSR-7 request object
+     *
+     * @param string $url The URL to make a request to
+     * @param array $params Key=>Value array of data to send
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function postUrlEncoded($url, array $params)
+    {
+        $request = new Request(
+            $url,
+            'POST',
+            'php://temp',
+            ['content-type' => 'application/x-www-form-urlencoded']
+        );
+
+        $request->getBody()->write(http_build_query($params));
+        return $this->send($request);
+    }
+
+    /**
      * Takes a URL and a key=>value array to generate a PUT PSR-7 request object
      *
      * @param string $url The URL to make a request to
@@ -292,7 +320,7 @@ class Client
     public function send(\Psr\Http\Message\RequestInterface $request)
     {
         if($this->credentials instanceof Container) {
-            if (strpos($request->getUri()->getPath(), '/v1/calls') === 0) {
+            if ($this->needsKeypairAuthentication($request)) {
                 $request = $request->withHeader('Authorization', 'Bearer ' . $this->credentials->get(Keypair::class)->generateJwt());
             } else {
                 $request = self::authRequest($request, $this->credentials->get(Basic::class));
@@ -319,15 +347,43 @@ class Client
             }
         }
 
-        //set the user-agent
-        $request = $request->withHeader('user-agent', implode('/', [
-            'nexmo-php',
-            self::VERSION,
-            'PHP-' . implode('.', [PHP_MAJOR_VERSION, PHP_MINOR_VERSION])
-        ]));
+        // The user agent must be in the following format:
+        // LIBRARY-NAME/LIBRARY-VERSION LANGUAGE-NAME/LANGUAGE-VERSION [APP-NAME/APP-VERSION]
+        // See https://github.com/Nexmo/client-library-specification/blob/master/SPECIFICATION.md#reporting
+        $userAgent = [];
+
+        // Library name
+        $userAgent[] = 'nexmo-php/'.self::VERSION;
+
+        // Language name
+        $userAgent[] = 'php/'.PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;
+
+        // If we have an app set, add that to the UA
+        if (isset($this->options['app'])) {
+            $app = $this->options['app'];
+            $userAgent[] = $app['name'].'/'.$app['version'];
+        }
+
+        // Set the header. Build by joining all the parts we have with a space
+        $request = $request->withHeader('User-Agent', implode(" ", $userAgent));
 
         $response = $this->client->sendRequest($request);
         return $response;
+    }
+
+    protected function validateAppOptions($app) {
+        $disallowedCharacters = ['/', ' ', "\t", "\n"];
+        foreach (['name', 'version'] as $key) {
+            if (!isset($app[$key])) {
+                throw new \InvalidArgumentException('app.'.$key.' has not been set');
+            }
+
+            foreach ($disallowedCharacters as $char) {
+                if (strpos($app[$key], $char) !== false) {
+                    throw new \InvalidArgumentException('app.'.$key.' cannot contain the '.$char.' character');
+                }
+            }
+        }
     }
 
     public function serialize(EntityInterface $entity)
@@ -374,5 +430,14 @@ class Client
         }
 
         return $this->factory->getApi($name);
+    }
+
+    protected function needsKeypairAuthentication(\Psr\Http\Message\RequestInterface $request)
+    {
+        $path = $request->getUri()->getPath();
+        $isCallEndpoint = strpos($path, '/v1/calls') === 0;
+        $isRecordingUrl = strpos($path, '/v1/files') === 0;
+
+        return $isCallEndpoint || $isRecordingUrl;
     }
 }

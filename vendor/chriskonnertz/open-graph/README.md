@@ -1,7 +1,8 @@
 # Open Graph Builder
 
-[![Monthly Downloads](https://img.shields.io/packagist/dm/chriskonnertz/open-graph.svg)](https://packagist.org/packages/chriskonnertz/open-graph)
 [![Build Status](https://travis-ci.org/chriskonnertz/open-graph.png)](https://travis-ci.org/chriskonnertz/open-graph)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/chriskonnertz/open-graph.svg)](https://packagist.org/packages/chriskonnertz/open-graph)
+[![Version](https://img.shields.io/packagist/v/chriskonnertz/open-graph.svg)](https://packagist.org/packages/chriskonnertz/open-graph)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chriskonnertz/open-graph/master/LICENSE)
 
 Library that assists in building Open Graph meta tags.
@@ -24,31 +25,32 @@ Run `composer update` to get the latest version of Open Graph Builder.
 
 ### Framework Support
 
-In Laravel 5 you may add an alias to `config/app.php`:
+Laravel 5.5 can auto-detect this package so you can ignore this section. 
+In Laravel 5.0-5.4 you have to edit your `config/app.php` config file. 
+You can either add an alias to the object so you can create a new instance via `new OpenGraph()` ...
+
 ```php
     'aliases' => array(
-        // ...
+        ...
         'OpenGraph' => 'ChrisKonnertz\OpenGraph\OpenGraph',
     ),
 ```
 
-> In Laravel 4 the path to this file is `app/config/app.php`.
-
-There is also a service provider and a facade. Add the service provider to the config file:
-
-```php
-    'providers' => array(
-        // ...
-        'ChrisKonnertz\OpenGraph\OpenGraphServiceProvider',
-    ),
-```
-
-To create an alias for the facade, add a new entry (or replace the one created before):
+...or an alias to the facade (this is what happens in Laravel 5.5 via package auto-discovery) so you
+do not have to create the instance by yourself but you can access it via pseduo-static methods. 
+If you choose this path you also have to add the service provider to the config file:
 
 ```php
     'aliases' => array(
-        // ...
+        ...
         'OpenGraph' => 'ChrisKonnertz\OpenGraph\OpenGraphFacade',
+    ),
+    
+    ...
+    
+    'providers' => array(
+        ...
+        'ChrisKonnertz\OpenGraph\OpenGraphServiceProvider',
     ),
 ```
 
@@ -97,19 +99,19 @@ Note that `DateTime` objects will be converted to ISO 8601 strings.
 You may add `image`, `audio` or `video` tags and pass the basic value (the URL to the object) and an array of additional attributes.
 ```php
     $og->image($imageUrl, [
-            'width'     => 300,
-            'height'    => 200
-        ]);
+        'width'     => 300,
+        'height'    => 200
+    ]);
 
     $og->audio($audioUrl, [
-            'type'     => 'audio/mpeg'
-        ]);
+        'type'     => 'audio/mpeg'
+    ]);
 
     $og->video($videoUrl, [
-            'width'     => 300,
-            'height'    => 200,
-            'type'      => 'application/x-shockwave-flash'
-        ]);
+        'width'     => 300,
+        'height'    => 200,
+        'type'      => 'application/x-shockwave-flash'
+    ]);
 ```
 ### Add Type Attributes
 

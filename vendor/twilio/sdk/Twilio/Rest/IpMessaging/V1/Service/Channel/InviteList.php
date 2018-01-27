@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -27,10 +28,7 @@ class InviteList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'channelSid' => $channelSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Invites';
     }
@@ -45,10 +43,7 @@ class InviteList extends ListResource {
     public function create($identity, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'Identity' => $identity,
-            'RoleSid' => $options['roleSid'],
-        ));
+        $data = Values::of(array('Identity' => $identity, 'RoleSid' => $options['roleSid'], ));
 
         $payload = $this->version->create(
             'POST',
@@ -125,7 +120,7 @@ class InviteList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Identity' => $options['identity'],
+            'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

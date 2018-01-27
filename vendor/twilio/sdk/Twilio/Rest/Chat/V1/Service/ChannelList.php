@@ -11,6 +11,7 @@ namespace Twilio\Rest\Chat\V1\Service;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -26,9 +27,7 @@ class ChannelList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels';
     }
@@ -56,11 +55,7 @@ class ChannelList extends ListResource {
             $data
         );
 
-        return new ChannelInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new ChannelInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -123,7 +118,7 @@ class ChannelList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Type' => $options['type'],
+            'Type' => Serialize::map($options['type'], function($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -161,11 +156,7 @@ class ChannelList extends ListResource {
      * @return \Twilio\Rest\Chat\V1\Service\ChannelContext 
      */
     public function getContext($sid) {
-        return new ChannelContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $sid
-        );
+        return new ChannelContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**

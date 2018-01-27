@@ -27,9 +27,7 @@ class TaskList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, );
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks';
     }
@@ -95,7 +93,7 @@ class TaskList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Priority' => $options['priority'],
-            'AssignmentStatus' => $options['assignmentStatus'],
+            'AssignmentStatus' => Serialize::map($options['assignmentStatus'], function($e) { return $e; }),
             'WorkflowSid' => $options['workflowSid'],
             'WorkflowName' => $options['workflowName'],
             'TaskQueueSid' => $options['taskQueueSid'],
@@ -157,11 +155,7 @@ class TaskList extends ListResource {
             $data
         );
 
-        return new TaskInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new TaskInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**
@@ -171,11 +165,7 @@ class TaskList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext 
      */
     public function getContext($sid) {
-        return new TaskContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $sid
-        );
+        return new TaskContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
     /**

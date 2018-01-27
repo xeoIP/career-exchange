@@ -32,6 +32,8 @@ use Twilio\Version;
  * @property array links
  */
 class WorkerInstance extends InstanceResource {
+    protected $_realTimeStatistics = null;
+    protected $_cumulativeStatistics = null;
     protected $_statistics = null;
     protected $_reservations = null;
     protected $_workerChannels = null;
@@ -65,10 +67,7 @@ class WorkerInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**
@@ -106,9 +105,7 @@ class WorkerInstance extends InstanceResource {
      * @return WorkerInstance Updated WorkerInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**
@@ -118,6 +115,24 @@ class WorkerInstance extends InstanceResource {
      */
     public function delete() {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Access the realTimeStatistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList 
+     */
+    protected function getRealTimeStatistics() {
+        return $this->proxy()->realTimeStatistics;
+    }
+
+    /**
+     * Access the cumulativeStatistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList 
+     */
+    protected function getCumulativeStatistics() {
+        return $this->proxy()->cumulativeStatistics;
     }
 
     /**

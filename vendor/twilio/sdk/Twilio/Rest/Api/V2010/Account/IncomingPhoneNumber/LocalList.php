@@ -27,9 +27,7 @@ class LocalList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers/Local.json';
     }
@@ -155,6 +153,8 @@ class LocalList extends ListResource {
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
+            'IdentitySid' => $options['identitySid'],
+            'AddressSid' => $options['addressSid'],
         ));
 
         $payload = $this->version->create(
@@ -164,11 +164,7 @@ class LocalList extends ListResource {
             $data
         );
 
-        return new LocalInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new LocalInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

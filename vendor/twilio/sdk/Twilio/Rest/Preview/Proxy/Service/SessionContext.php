@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Preview\Proxy\Service\Session\InteractionList;
 use Twilio\Rest\Preview\Proxy\Service\Session\ParticipantList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -41,10 +42,7 @@ class SessionContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sid) . '';
     }
@@ -93,7 +91,7 @@ class SessionContext extends InstanceContext {
             'UniqueName' => $options['uniqueName'],
             'Ttl' => $options['ttl'],
             'Status' => $options['status'],
-            'Participants' => $options['participants'],
+            'Participants' => Serialize::map($options['participants'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->update(

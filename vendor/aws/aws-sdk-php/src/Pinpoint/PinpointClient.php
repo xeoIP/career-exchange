@@ -1,6 +1,9 @@
 <?php
 namespace Aws\Pinpoint;
 
+use Aws\Api\ApiProvider;
+use Aws\Api\DocModel;
+use Aws\Api\Service;
 use Aws\AwsClient;
 
 /**
@@ -13,12 +16,20 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise createImportJobAsync(array $args = [])
  * @method \Aws\Result createSegment(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createSegmentAsync(array $args = [])
+ * @method \Aws\Result deleteAdmChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteAdmChannelAsync(array $args = [])
  * @method \Aws\Result deleteApnsChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteApnsChannelAsync(array $args = [])
  * @method \Aws\Result deleteApnsSandboxChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteApnsSandboxChannelAsync(array $args = [])
+ * @method \Aws\Result deleteApnsVoipChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteApnsVoipChannelAsync(array $args = [])
+ * @method \Aws\Result deleteApnsVoipSandboxChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteApnsVoipSandboxChannelAsync(array $args = [])
  * @method \Aws\Result deleteApp(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteAppAsync(array $args = [])
+ * @method \Aws\Result deleteBaiduChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteBaiduChannelAsync(array $args = [])
  * @method \Aws\Result deleteCampaign(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteCampaignAsync(array $args = [])
  * @method \Aws\Result deleteEmailChannel(array $args = [])
@@ -31,16 +42,24 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise deleteSegmentAsync(array $args = [])
  * @method \Aws\Result deleteSmsChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteSmsChannelAsync(array $args = [])
+ * @method \Aws\Result getAdmChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getAdmChannelAsync(array $args = [])
  * @method \Aws\Result getApnsChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getApnsChannelAsync(array $args = [])
  * @method \Aws\Result getApnsSandboxChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getApnsSandboxChannelAsync(array $args = [])
+ * @method \Aws\Result getApnsVoipChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getApnsVoipChannelAsync(array $args = [])
+ * @method \Aws\Result getApnsVoipSandboxChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getApnsVoipSandboxChannelAsync(array $args = [])
  * @method \Aws\Result getApp(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getAppAsync(array $args = [])
  * @method \Aws\Result getApplicationSettings(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getApplicationSettingsAsync(array $args = [])
  * @method \Aws\Result getApps(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getAppsAsync(array $args = [])
+ * @method \Aws\Result getBaiduChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getBaiduChannelAsync(array $args = [])
  * @method \Aws\Result getCampaign(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getCampaignAsync(array $args = [])
  * @method \Aws\Result getCampaignActivities(array $args = [])
@@ -79,12 +98,22 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise putEventStreamAsync(array $args = [])
  * @method \Aws\Result sendMessages(array $args = [])
  * @method \GuzzleHttp\Promise\Promise sendMessagesAsync(array $args = [])
+ * @method \Aws\Result sendUsersMessages(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise sendUsersMessagesAsync(array $args = [])
+ * @method \Aws\Result updateAdmChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateAdmChannelAsync(array $args = [])
  * @method \Aws\Result updateApnsChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateApnsChannelAsync(array $args = [])
  * @method \Aws\Result updateApnsSandboxChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateApnsSandboxChannelAsync(array $args = [])
+ * @method \Aws\Result updateApnsVoipChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateApnsVoipChannelAsync(array $args = [])
+ * @method \Aws\Result updateApnsVoipSandboxChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateApnsVoipSandboxChannelAsync(array $args = [])
  * @method \Aws\Result updateApplicationSettings(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateApplicationSettingsAsync(array $args = [])
+ * @method \Aws\Result updateBaiduChannel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateBaiduChannelAsync(array $args = [])
  * @method \Aws\Result updateCampaign(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateCampaignAsync(array $args = [])
  * @method \Aws\Result updateEmailChannel(array $args = [])
@@ -100,4 +129,47 @@ use Aws\AwsClient;
  * @method \Aws\Result updateSmsChannel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateSmsChannelAsync(array $args = [])
  */
-class PinpointClient extends AwsClient {}
+class PinpointClient extends AwsClient
+{
+    private static $nameCollisionOverrides = [
+        'GetUserEndpoint' => 'GetEndpoint',
+        'GetUserEndpointAsync' => 'GetEndpointAsync',
+        'UpdateUserEndpoint' => 'UpdateEndpoint',
+        'UpdateUserEndpointAsync' => 'UpdateEndpointAsync',
+        'UpdateUserEndpointsBatch' => 'UpdateEndpointsBatch',
+        'UpdateUserEndpointsBatchAsync' => 'UpdateEndpointsBatchAsync',
+    ];
+
+    public function __call($name, array $args)
+    {
+        // Overcomes a naming collision with `AwsClient::getEndpoint`.
+        if (isset(self::$nameCollisionOverrides[ucfirst($name)])) {
+            $name = self::$nameCollisionOverrides[ucfirst($name)];
+        }
+
+        return parent::__call($name, $args);
+    }
+
+    /**
+     * @internal
+     * @codeCoverageIgnore
+     */
+    public static function applyDocFilters(array $api, array $docs)
+    {
+        foreach (self::$nameCollisionOverrides as $overrideName => $operationName) {
+            if (substr($overrideName, -5) === 'Async') {
+                continue;
+            }
+            // Overcomes a naming collision with `AwsClient::getEndpoint`.
+            $api['operations'][$overrideName] = $api['operations'][$operationName];
+            $docs['operations'][$overrideName] = $docs['operations'][$operationName];
+            unset($api['operations'][$operationName], $docs['operations'][$operationName]);
+        }
+        ksort($api['operations']);
+
+        return [
+            new Service($api, ApiProvider::defaultProvider()),
+            new DocModel($docs)
+        ];
+    }
+}

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -27,10 +28,7 @@ class ConnectAppContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/ConnectApps/' . rawurlencode($sid) . '.json';
     }
@@ -74,7 +72,7 @@ class ConnectAppContext extends InstanceContext {
             'Description' => $options['description'],
             'FriendlyName' => $options['friendlyName'],
             'HomepageUrl' => $options['homepageUrl'],
-            'Permissions' => $options['permissions'],
+            'Permissions' => Serialize::map($options['permissions'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->update(

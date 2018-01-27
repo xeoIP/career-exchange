@@ -46,6 +46,7 @@ class DomainTest extends HolodeckTestCase {
                         "date_updated": "Fri, 06 Sep 2013 18:48:50 -0000",
                         "domain_name": "dunder-mifflin-scranton.api.twilio.com",
                         "friendly_name": "Scranton Office",
+                        "sip_registration": true,
                         "sid": "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "subresource_uris": {
                             "credential_list_mappings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialListMappings.json",
@@ -110,9 +111,7 @@ class DomainTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'DomainName' => "domainName",
-        );
+        $values = array('DomainName' => "domainName", );
 
         $this->assertRequest(new Request(
             'post',
@@ -134,6 +133,7 @@ class DomainTest extends HolodeckTestCase {
                 "date_updated": "Fri, 06 Sep 2013 19:18:30 -0000",
                 "domain_name": "dunder-mifflin-scranton.sip.twilio.com",
                 "friendly_name": "Scranton Office",
+                "sip_registration": true,
                 "sid": "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "subresource_uris": {
                     "credential_list_mappings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialListMappings.json",
@@ -185,6 +185,7 @@ class DomainTest extends HolodeckTestCase {
                 "date_updated": "Fri, 06 Sep 2013 19:18:30 -0000",
                 "domain_name": "dunder-mifflin-scranton.sip.twilio.com",
                 "friendly_name": "Scranton Office",
+                "sip_registration": true,
                 "sid": "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "subresource_uris": {
                     "credential_list_mappings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialListMappings.json",
@@ -236,6 +237,7 @@ class DomainTest extends HolodeckTestCase {
                 "date_updated": "Fri, 06 Sep 2013 19:18:30 -0000",
                 "domain_name": "dunder-mifflin-scranton.sip.twilio.com",
                 "friendly_name": "Scranton Office",
+                "sip_registration": false,
                 "sid": "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "subresource_uris": {
                     "credential_list_mappings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialListMappings.json",

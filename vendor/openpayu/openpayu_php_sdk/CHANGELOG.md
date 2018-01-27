@@ -1,3 +1,19 @@
+## 2.2.9
+* Add a new exception type which holds the original server response (Răzvan Tache)
+* Add method to retrieve order transaction (Mariusz Kalota)
+
+## 2.2.8
+* Set args separator
+
+## 2.2.7
+* Add delete token
+
+## 2.2.6
+* Remove cache for Trusted Merchant
+
+## 2.2.5
+* Added grant type to cache key
+
 ## 2.2.4
 * Added connection over proxy support
 * Added trusted_merchant Oauth Grant Type

@@ -1,4 +1,6 @@
-<?php namespace ChrisKonnertz\OpenGraph;
+<?php 
+
+namespace ChrisKonnertz\OpenGraph;
 
 use Exception;
 
@@ -6,19 +8,22 @@ class OpenGraphTag {
 
     /**
      * The name of the tag
+     *
      * @var string
      */
     protected $name;
 
     /**
      * The value of the tag
+     *
      * @var mixed
      */
     protected $value;
 
     /**
      * Add the "og"-prefix?
-     * @var boolean
+     *
+     * @var bool
      */
     protected $prefixed;
 
@@ -27,7 +32,7 @@ class OpenGraphTag {
      * 
      * @param string  $name     The name of the tag
      * @param mixed   $value    The value of the tag
-     * @param boolean $prefixed Add the "og"-prefix?
+     * @param bool    $prefixed Add the "og"-prefix?
      */
     public function __construct($name, $value, $prefixed = true) 
     {
@@ -36,11 +41,17 @@ class OpenGraphTag {
         $this->setAttribute('prefixed', $prefixed);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __get($name)
     {
         return $this->$name;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __set($name, $value)
     {
         $this->setAttribute($name, $value);
@@ -57,6 +68,7 @@ class OpenGraphTag {
         // Convert values
         switch ($name) {
             case 'name':
+                // no break here
             case 'value':
                 $value = (string) $value;
                 break;

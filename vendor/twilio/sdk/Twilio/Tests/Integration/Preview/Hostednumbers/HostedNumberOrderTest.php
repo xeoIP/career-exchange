@@ -38,6 +38,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "address_sid": "AD11111111111111111111111111111111",
+                "call_delay": 15,
                 "capabilities": {
                     "sms": true,
                     "voice": false
@@ -49,6 +50,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "date_created": "2017-03-28T20:06:39Z",
                 "date_updated": "2017-03-28T20:06:39Z",
                 "email": "test@twilio.com",
+                "extension": "5105",
+                "failure_reason": "",
                 "friendly_name": "friendly_name",
                 "incoming_phone_number_sid": "PN11111111111111111111111111111111",
                 "phone_number": "+14153608311",
@@ -57,7 +60,14 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "status": "received",
                 "unique_name": "foobar",
                 "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "verification_attempts": 0
+                "verification_attempts": 0,
+                "verification_call_sids": [
+                    "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+                ],
+                "verification_code": "8794",
+                "verification_document_sid": null,
+                "verification_type": "phone-call"
             }
             '
         ));
@@ -113,6 +123,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "address_sid": "AD11111111111111111111111111111111",
+                "call_delay": 15,
                 "capabilities": {
                     "sms": true,
                     "voice": false
@@ -124,6 +135,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "date_created": "2017-03-28T20:06:39Z",
                 "date_updated": "2017-03-28T20:06:39Z",
                 "email": "test+hosted@twilio.com",
+                "extension": "1234",
+                "failure_reason": "",
                 "friendly_name": "new friendly name",
                 "incoming_phone_number_sid": "PN11111111111111111111111111111111",
                 "phone_number": "+14153608311",
@@ -132,7 +145,14 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "status": "pending-loa",
                 "unique_name": "new unique name",
                 "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "verification_attempts": 1
+                "verification_attempts": 1,
+                "verification_call_sids": [
+                    "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+                ],
+                "verification_code": "8794",
+                "verification_document_sid": null,
+                "verification_type": "phone-call"
             }
             '
         ));
@@ -198,6 +218,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "address_sid": "AD11111111111111111111111111111111",
+                        "call_delay": 15,
                         "capabilities": {
                             "sms": true,
                             "voice": false
@@ -209,6 +230,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                         "date_created": "2017-03-28T20:06:39Z",
                         "date_updated": "2017-03-28T20:06:39Z",
                         "email": "test@twilio.com",
+                        "extension": "1234",
+                        "failure_reason": "",
                         "friendly_name": "friendly_name",
                         "incoming_phone_number_sid": "PN11111111111111111111111111111111",
                         "phone_number": "+14153608311",
@@ -217,7 +240,14 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                         "status": "received",
                         "unique_name": "foobar",
                         "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "verification_attempts": 0
+                        "verification_attempts": 0,
+                        "verification_call_sids": [
+                            "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+                        ],
+                        "verification_code": "8794",
+                        "verification_document_sid": null,
+                        "verification_type": "phone-call"
                     }
                 ]
             }
@@ -233,16 +263,13 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "isoCountry", True, "email");
+            $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+15017122661", True);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
-            'AddressSid' => "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            'PhoneNumber' => "+987654321",
-            'IsoCountry' => "isoCountry",
+            'PhoneNumber' => "+15017122661",
             'SmsCapability' => Serialize::booleanToString(True),
-            'Email' => "email",
         );
 
         $this->assertRequest(new Request(
@@ -260,6 +287,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "address_sid": "AD11111111111111111111111111111111",
+                "call_delay": 0,
                 "capabilities": {
                     "sms": true,
                     "voice": false
@@ -268,6 +296,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "date_created": "2017-03-28T20:06:39Z",
                 "date_updated": "2017-03-28T20:06:39Z",
                 "email": "test@twilio.com",
+                "extension": null,
+                "failure_reason": "",
                 "friendly_name": null,
                 "incoming_phone_number_sid": "PN11111111111111111111111111111111",
                 "phone_number": "+14153608311",
@@ -276,12 +306,96 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "status": "received",
                 "unique_name": null,
                 "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "verification_attempts": 0
+                "verification_attempts": 0,
+                "verification_call_sids": null,
+                "verification_code": null,
+                "verification_document_sid": null,
+                "verification_type": "phone-call"
             }
             '
         ));
 
-        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "isoCountry", True, "email");
+        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+15017122661", True);
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithoutOptionalLoaFieldsResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "address_sid": null,
+                "call_delay": 0,
+                "capabilities": {
+                    "sms": true,
+                    "voice": false
+                },
+                "cc_emails": [],
+                "date_created": "2017-03-28T20:06:39Z",
+                "date_updated": "2017-03-28T20:06:39Z",
+                "email": null,
+                "extension": null,
+                "failure_reason": "",
+                "friendly_name": null,
+                "incoming_phone_number_sid": "PN11111111111111111111111111111111",
+                "phone_number": "+14153608311",
+                "sid": "HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "signing_document_sid": null,
+                "status": "received",
+                "unique_name": null,
+                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_attempts": 0,
+                "verification_call_sids": null,
+                "verification_code": null,
+                "verification_document_sid": null,
+                "verification_type": "phone-call"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+15017122661", True);
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithPhoneBillVerificationResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "address_sid": null,
+                "call_delay": 0,
+                "capabilities": {
+                    "sms": true,
+                    "voice": false
+                },
+                "cc_emails": [],
+                "date_created": "2017-03-28T20:06:39Z",
+                "date_updated": "2017-03-28T20:06:39Z",
+                "email": null,
+                "extension": null,
+                "failure_reason": "",
+                "friendly_name": null,
+                "incoming_phone_number_sid": "PN11111111111111111111111111111111",
+                "phone_number": "+14153608311",
+                "sid": "HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "signing_document_sid": null,
+                "status": "received",
+                "unique_name": null,
+                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_attempts": 0,
+                "verification_call_sids": null,
+                "verification_code": null,
+                "verification_document_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_type": "phone-bill"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+15017122661", True);
 
         $this->assertNotNull($actual);
     }

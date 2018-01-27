@@ -1,0 +1,9 @@
+#bootstrap/cache
+public/vendor
+#app/Helpers
+#app/http
+#app/Mail
+#app/Models
+#app/Notifications
+#app/Observers
+#app/Plugins

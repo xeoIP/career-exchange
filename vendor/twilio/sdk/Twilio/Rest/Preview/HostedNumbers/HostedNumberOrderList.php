@@ -132,27 +132,21 @@ class HostedNumberOrderList extends ListResource {
     /**
      * Create a new HostedNumberOrderInstance
      * 
-     * @param string $addressSid Address sid.
      * @param string $phoneNumber An E164 formatted phone number.
-     * @param string $isoCountry ISO country code.
      * @param boolean $smsCapability Specify SMS capability to host.
-     * @param string $email Email.
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
      */
-    public function create($addressSid, $phoneNumber, $isoCountry, $smsCapability, $email, $options = array()) {
+    public function create($phoneNumber, $smsCapability, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'AddressSid' => $addressSid,
             'PhoneNumber' => $phoneNumber,
-            'IsoCountry' => $isoCountry,
             'SmsCapability' => Serialize::booleanToString($smsCapability),
-            'Email' => $email,
             'AccountSid' => $options['accountSid'],
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
-            'CcEmails' => $options['ccEmails'],
+            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
             'SmsUrl' => $options['smsUrl'],
             'SmsMethod' => $options['smsMethod'],
             'SmsFallbackUrl' => $options['smsFallbackUrl'],
@@ -160,6 +154,10 @@ class HostedNumberOrderList extends ListResource {
             'StatusCallbackUrl' => $options['statusCallbackUrl'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'SmsApplicationSid' => $options['smsApplicationSid'],
+            'AddressSid' => $options['addressSid'],
+            'Email' => $options['email'],
+            'VerificationType' => $options['verificationType'],
+            'VerificationDocumentSid' => $options['verificationDocumentSid'],
         ));
 
         $payload = $this->version->create(
@@ -169,10 +167,7 @@ class HostedNumberOrderList extends ListResource {
             $data
         );
 
-        return new HostedNumberOrderInstance(
-            $this->version,
-            $payload
-        );
+        return new HostedNumberOrderInstance($this->version, $payload);
     }
 
     /**
@@ -182,10 +177,7 @@ class HostedNumberOrderList extends ListResource {
      * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext 
      */
     public function getContext($sid) {
-        return new HostedNumberOrderContext(
-            $this->version,
-            $sid
-        );
+        return new HostedNumberOrderContext($this->version, $sid);
     }
 
     /**

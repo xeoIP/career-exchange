@@ -38,6 +38,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "address_requirements": "none",
+                "address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "beta": false,
                 "capabilities": {
@@ -50,6 +51,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "emergency_status": "Inactive",
                 "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "(808) 925-5327",
+                "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "origin": "origin",
                 "phone_number": "+18089255327",
                 "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -100,6 +102,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "address_requirements": "none",
+                "address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "beta": false,
                 "capabilities": {
@@ -112,6 +115,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "emergency_status": "Active",
                 "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "(808) 925-5327",
+                "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "origin": "origin",
                 "phone_number": "+18089255327",
                 "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -193,6 +197,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "address_requirements": "none",
+                        "address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "api_version": "2010-04-01",
                         "beta": null,
                         "capabilities": {
@@ -205,6 +210,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                         "emergency_status": "Active",
                         "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "friendly_name": "(808) 925-5327",
+                        "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "origin": "origin",
                         "phone_number": "+18089255327",
                         "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -293,6 +299,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "address_requirements": "none",
+                "address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "beta": false,
                 "capabilities": {
@@ -305,6 +312,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 "emergency_status": "Active",
                 "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "(808) 925-5327",
+                "identity_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "origin": "origin",
                 "phone_number": "+18089255327",
                 "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

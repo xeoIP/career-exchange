@@ -37,9 +37,7 @@ class InstalledAddOnContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid, );
 
         $this->uri = '/InstalledAddOns/' . rawurlencode($sid) . '';
     }
@@ -67,11 +65,7 @@ class InstalledAddOnContext extends InstanceContext {
             $params
         );
 
-        return new InstalledAddOnInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new InstalledAddOnInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -84,7 +78,7 @@ class InstalledAddOnContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'Configuration' => Serialize::json_object($options['configuration']),
+            'Configuration' => Serialize::jsonObject($options['configuration']),
             'UniqueName' => $options['uniqueName'],
         ));
 
@@ -95,11 +89,7 @@ class InstalledAddOnContext extends InstanceContext {
             $data
         );
 
-        return new InstalledAddOnInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new InstalledAddOnInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -109,10 +99,7 @@ class InstalledAddOnContext extends InstanceContext {
      */
     protected function getExtensions() {
         if (!$this->_extensions) {
-            $this->_extensions = new InstalledAddOnExtensionList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_extensions = new InstalledAddOnExtensionList($this->version, $this->solution['sid']);
         }
 
         return $this->_extensions;

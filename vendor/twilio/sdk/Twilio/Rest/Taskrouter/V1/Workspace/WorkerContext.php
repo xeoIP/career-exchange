@@ -15,18 +15,26 @@ use Twilio\Options;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList realTimeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList cumulativeStatistics
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList statistics
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList reservations
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList workerChannels
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext realTimeStatistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsContext cumulativeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext statistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext reservations(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext workerChannels(string $sid)
  */
 class WorkerContext extends InstanceContext {
+    protected $_realTimeStatistics = null;
+    protected $_cumulativeStatistics = null;
     protected $_statistics = null;
     protected $_reservations = null;
     protected $_workerChannels = null;
@@ -43,10 +51,7 @@ class WorkerContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid, );
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/' . rawurlencode($sid) . '';
     }
@@ -110,6 +115,38 @@ class WorkerContext extends InstanceContext {
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Access the realTimeStatistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList 
+     */
+    protected function getRealTimeStatistics() {
+        if (!$this->_realTimeStatistics) {
+            $this->_realTimeStatistics = new WorkersRealTimeStatisticsList(
+                $this->version,
+                $this->solution['workspaceSid']
+            );
+        }
+
+        return $this->_realTimeStatistics;
+    }
+
+    /**
+     * Access the cumulativeStatistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList 
+     */
+    protected function getCumulativeStatistics() {
+        if (!$this->_cumulativeStatistics) {
+            $this->_cumulativeStatistics = new WorkersCumulativeStatisticsList(
+                $this->version,
+                $this->solution['workspaceSid']
+            );
+        }
+
+        return $this->_cumulativeStatistics;
     }
 
     /**

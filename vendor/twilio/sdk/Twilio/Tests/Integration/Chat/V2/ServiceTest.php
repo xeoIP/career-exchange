@@ -50,11 +50,14 @@ class ServiceTest extends HolodeckTestCase {
                 "links": {
                     "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
                     "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                 },
                 "notifications": {},
                 "post_webhook_url": "post_webhook_url",
                 "pre_webhook_url": "pre_webhook_url",
+                "pre_webhook_retry_count": 2,
+                "post_webhook_retry_count": 3,
                 "reachability_enabled": false,
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -110,9 +113,7 @@ class ServiceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'FriendlyName' => "friendlyName",
-        );
+        $values = array('FriendlyName' => "friendlyName", );
 
         $this->assertRequest(new Request(
             'post',
@@ -142,11 +143,14 @@ class ServiceTest extends HolodeckTestCase {
                 "links": {
                     "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
                     "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                 },
                 "notifications": {},
                 "post_webhook_url": "post_webhook_url",
                 "pre_webhook_url": "pre_webhook_url",
+                "pre_webhook_retry_count": 2,
+                "post_webhook_retry_count": 3,
                 "reachability_enabled": false,
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -238,11 +242,14 @@ class ServiceTest extends HolodeckTestCase {
                         "links": {
                             "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
                             "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                            "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                            "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                            "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                         },
                         "notifications": {},
                         "post_webhook_url": "post_webhook_url",
                         "pre_webhook_url": "pre_webhook_url",
+                        "pre_webhook_retry_count": 2,
+                        "post_webhook_retry_count": 3,
                         "reachability_enabled": false,
                         "read_status_enabled": false,
                         "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -301,9 +308,11 @@ class ServiceTest extends HolodeckTestCase {
                 "links": {
                     "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
                     "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
-                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                 },
                 "notifications": {
+                    "log_enabled": true,
                     "added_to_channel": {
                         "enabled": false,
                         "template": "notifications.added_to_channel.template"
@@ -324,6 +333,8 @@ class ServiceTest extends HolodeckTestCase {
                 },
                 "post_webhook_url": "post_webhook_url",
                 "pre_webhook_url": "pre_webhook_url",
+                "pre_webhook_retry_count": 2,
+                "post_webhook_retry_count": 3,
                 "reachability_enabled": false,
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

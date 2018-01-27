@@ -175,7 +175,7 @@ return array (
     ),
     1 => 
     array (
-      'pattern' => '([3-5]\\d)(1[67])(\\d{2,3})',
+      'pattern' => '([3-5]\\d)(\\d{2})(\\d{2,3})',
       'format' => '$1 $2 $3',
       'leadingDigitsPatterns' => 
       array (
@@ -227,7 +227,8 @@ return array (
       'format' => '$1 $2',
       'leadingDigitsPatterns' => 
       array (
-        0 => '9090',
+        0 => '909',
+        1 => '9090',
       ),
       'nationalPrefixFormattingRule' => '0$1',
       'domesticCarrierCodeFormattingRule' => '',

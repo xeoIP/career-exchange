@@ -10,6 +10,7 @@
 namespace Twilio\Rest\IpMessaging\V1\Service;
 
 use Twilio\ListResource;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,9 +26,7 @@ class RoleList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Roles';
     }
@@ -44,7 +43,7 @@ class RoleList extends ListResource {
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'Type' => $type,
-            'Permission' => $permission,
+            'Permission' => Serialize::map($permission, function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(
@@ -54,11 +53,7 @@ class RoleList extends ListResource {
             $data
         );
 
-        return new RoleInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new RoleInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -154,11 +149,7 @@ class RoleList extends ListResource {
      * @return \Twilio\Rest\IpMessaging\V1\Service\RoleContext 
      */
     public function getContext($sid) {
-        return new RoleContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $sid
-        );
+        return new RoleContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**

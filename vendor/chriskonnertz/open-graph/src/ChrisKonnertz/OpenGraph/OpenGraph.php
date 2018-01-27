@@ -1,4 +1,6 @@
-<?php namespace ChrisKonnertz\OpenGraph;
+<?php 
+
+namespace ChrisKonnertz\OpenGraph;
 
 use Exception;
 use DateTime;
@@ -6,12 +8,13 @@ use DateTime;
 /**
  * Open Graph protocol official docs: http://ogp.me/
  */
-class OpenGraph {
+class OpenGraph 
+{
 
     /**
      * The version number
      */
-    const VERSION = '1.0.3';
+    const VERSION = '1.0.5';
 
     /**
      * The name prefix
@@ -20,18 +23,21 @@ class OpenGraph {
 
     /**
      * Array containing the tags
-     * @var array
+     *
+     * @var OpenGraphTag[]
      */
     protected $tags;
 
     /**
      * Enables validation. A violation of the standard will throw an exception.
-     * @var boolean
+     *
+     * @var bool
      */
     protected $validate;
 
     /**
      * HTML code of the tag template. {{name}} will be replaced by the variable's name and {{value}} with its value.
+     *
      * @var string
      */
     protected $template = "<meta property=\"{{name}}\" content=\"{{value}}\" />\n";
@@ -39,7 +45,7 @@ class OpenGraph {
     /**
      * Constructor call
      * 
-     * @param boolean $validate Enable validation?
+     * @param bool $validate Enable validation?
      */
     public function __construct($validate = false)
     {
@@ -52,7 +58,7 @@ class OpenGraph {
      * 
      * @param  string  $name     The name of the tag
      * @param  mixed   $value    The value of the tag
-     * @param  boolean $prefixed Add the "og"-prefix?
+     * @param  bool    $prefixed Add the "og"-prefix?
      * @return OpenGraphTag
      */
     protected function createTag($name, $value, $prefixed = true)
@@ -86,7 +92,7 @@ class OpenGraph {
     /**
      * Getter for the tags.
      * 
-     * @return array
+     * @return OpenGraphTag[]
      */
     public function tags()
     {
@@ -98,7 +104,7 @@ class OpenGraph {
      * It's possible that a tag has multiple values.
      * 
      * @param  string  $name
-     * @return boolean
+     * @return bool
      */
     public function has($name)
     {
@@ -115,7 +121,7 @@ class OpenGraph {
      * Remove all tags with the given name
      * 
      * @param  string  $name
-     * @return void
+     * @return OpenGraph
      */
     public function forget($name)
     {
@@ -145,7 +151,7 @@ class OpenGraph {
      * 
      * @param string  $name     The name of the tag
      * @param string  $value    The value of the tag
-     * @param boolean $prefixed Add the "og"-prefix?
+     * @param bool    $prefixed Add the "og"-prefix?
      * @return OpenGraph
      */
     public function tag($name, $value, $prefixed = true)
@@ -162,8 +168,8 @@ class OpenGraph {
      * 
      * @param string    $tagName    The name of the base tag
      * @param array     $attributes Array with attributes (pairs of name and value)
-     * @param array     $valid      Array with names of valid attributes
-     * @param boolean   $prefixed   Add the "og"-prefix?
+     * @param string[]  $valid      Array with names of valid attributes
+     * @param bool      $prefixed   Add the "og"-prefix?
      * @return OpenGraph
      */
     public function attributes($tagName, $attributes = array(), $valid = array(), $prefixed = true)
@@ -188,7 +194,7 @@ class OpenGraph {
      * 
      * @param string    $tagName    The name of the base tag
      * @param array     $attributes Array with attributes (pairs of name and value)
-     * @param array     $valid      Array with names of valid attributes
+     * @param string[]  $valid      Array with names of valid attributes
      * @return OpenGraph
      */
     public function unprefixedAttributes($tagName, $attributes = array(), $valid = array())
@@ -382,7 +388,7 @@ class OpenGraph {
     /**
      * Adds locale:alternate tags
      * 
-     * @param  string $locales An array of alternative locales
+     * @param  string[] $locales An array of alternative locales
      * @return OpenGraph
      */
     public function localeAlternate($locales = array())
@@ -446,8 +452,8 @@ class OpenGraph {
      * Adds an audio tag
      * If the URL is relative its converted to an absolute one.
      * 
-     * @param  string $video The URL of the video file
-     * @param  array  $attributes   Array with additional attributes (pairs of name and value)
+     * @param  string $audioFile  The URL of the video file
+     * @param  array  $attributes Array with additional attributes (pairs of name and value)
      * @return OpenGraph
      */
     public function audio($audioFile, $attributes = null)
@@ -523,8 +529,8 @@ class OpenGraph {
      * Adds a video tag
      * If the URL is relative its converted to an absolute one.
      * 
-     * @param  string $videoFile The URL of the video file
-     * @param  array  $attributes   Array with additional attributes (pairs of name and value)
+     * @param  string $videoFile  The URL of the video file
+     * @param  array  $attributes Array with additional attributes (pairs of name and value)
      * @return OpenGraph
      */
     public function video($videoFile, $attributes = null)

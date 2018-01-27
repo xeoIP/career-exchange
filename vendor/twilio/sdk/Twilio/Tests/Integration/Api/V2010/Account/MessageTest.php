@@ -21,13 +21,11 @@ class MessageTest extends HolodeckTestCase {
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->messages->create("+123456789");
+                                     ->messages->create("+15558675310");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'To' => "+123456789",
-        );
+        $values = array('To' => "+15558675310", );
 
         $this->assertRequest(new Request(
             'post',
@@ -69,7 +67,7 @@ class MessageTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->messages->create("+123456789");
+                                           ->messages->create("+15558675310");
 
         $this->assertNotNull($actual);
     }
@@ -256,9 +254,7 @@ class MessageTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Body' => "body",
-        );
+        $values = array('Body' => "body", );
 
         $this->assertRequest(new Request(
             'post',

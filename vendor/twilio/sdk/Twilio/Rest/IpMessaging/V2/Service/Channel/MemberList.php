@@ -28,10 +28,7 @@ class MemberList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'channelSid' => $channelSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Members';
     }
@@ -130,7 +127,7 @@ class MemberList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Identity' => $options['identity'],
+            'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

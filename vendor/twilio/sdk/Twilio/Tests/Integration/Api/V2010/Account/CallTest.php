@@ -21,14 +21,11 @@ class CallTest extends HolodeckTestCase {
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->calls->create("+123456789", "+987654321");
+                                     ->calls->create("+15558675310", "+15017122661");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'To' => "+123456789",
-            'From' => "+987654321",
-        );
+        $values = array('To' => "+15558675310", 'From' => "+15017122661", );
 
         $this->assertRequest(new Request(
             'post',
@@ -66,7 +63,9 @@ class CallTest extends HolodeckTestCase {
                 "status": "completed",
                 "subresource_uris": {
                     "notifications": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json",
-                    "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json"
+                    "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json",
+                    "feedback": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Feedback.json",
+                    "feedback_summaries": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary.json"
                 },
                 "to": "+14158675309",
                 "to_formatted": "(415) 867-5309",
@@ -76,7 +75,7 @@ class CallTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls->create("+123456789", "+987654321");
+                                           ->calls->create("+15558675310", "+15017122661");
 
         $this->assertNotNull($actual);
     }
@@ -220,14 +219,11 @@ class CallTest extends HolodeckTestCase {
                 ],
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?PageSize=1&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?PageSize=1&Page=9690",
                 "next_page_uri": null,
-                "num_pages": 9691,
                 "page": 0,
                 "page_size": 1,
                 "previous_page_uri": null,
                 "start": 0,
-                "total": 9691,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?PageSize=1&Page=0"
             }
             '
@@ -247,14 +243,11 @@ class CallTest extends HolodeckTestCase {
                 "calls": [],
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?PageSize=1&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?PageSize=1&Page=9690",
                 "next_page_uri": null,
-                "num_pages": 9691,
                 "page": 0,
                 "page_size": 1,
                 "previous_page_uri": null,
                 "start": 0,
-                "total": 9691,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?PageSize=1&Page=0"
             }
             '

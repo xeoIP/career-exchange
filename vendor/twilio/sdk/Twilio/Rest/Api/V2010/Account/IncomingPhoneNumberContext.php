@@ -36,10 +36,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . rawurlencode($sid) . '.json';
     }
@@ -74,6 +71,8 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'EmergencyAddressSid' => $options['emergencyAddressSid'],
             'TrunkSid' => $options['trunkSid'],
             'VoiceReceiveMode' => $options['voiceReceiveMode'],
+            'IdentitySid' => $options['identitySid'],
+            'AddressSid' => $options['addressSid'],
         ));
 
         $payload = $this->version->update(

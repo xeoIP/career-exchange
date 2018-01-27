@@ -139,7 +139,7 @@ class RatePlanList extends ListResource {
             'VoiceEnabled' => Serialize::booleanToString($options['voiceEnabled']),
             'CommandsEnabled' => Serialize::booleanToString($options['commandsEnabled']),
             'NationalRoamingEnabled' => Serialize::booleanToString($options['nationalRoamingEnabled']),
-            'InternationalRoaming' => $options['internationalRoaming'],
+            'InternationalRoaming' => Serialize::map($options['internationalRoaming'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(
@@ -149,10 +149,7 @@ class RatePlanList extends ListResource {
             $data
         );
 
-        return new RatePlanInstance(
-            $this->version,
-            $payload
-        );
+        return new RatePlanInstance($this->version, $payload);
     }
 
     /**
@@ -162,10 +159,7 @@ class RatePlanList extends ListResource {
      * @return \Twilio\Rest\Preview\Wireless\RatePlanContext 
      */
     public function getContext($sid) {
-        return new RatePlanContext(
-            $this->version,
-            $sid
-        );
+        return new RatePlanContext($this->version, $sid);
     }
 
     /**
