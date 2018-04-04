@@ -3,6 +3,31 @@
 namespace App\Models;
 
 
+/**
+ * App\Models\Payment
+ *
+ * @property int $id
+ * @property int|null $post_id
+ * @property int|null $package_id
+ * @property int|null $payment_method_id
+ * @property string|null $transaction_id Transaction's ID at the Provider
+ * @property int $active
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Models\Language $language
+ * @property-read \App\Models\Package|null $package
+ * @property-read \App\Models\PaymentMethod|null $paymentMethod
+ * @property-read \App\Models\Post|null $post
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment wherePackageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment wherePaymentMethodId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment whereTransactionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Payment extends BaseModel
 {
     /**

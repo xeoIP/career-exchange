@@ -4,6 +4,21 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * App\Models\PasswordReset
+ *
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $token
+ * @property \Carbon\Carbon|null $created_at
+ * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset whereToken($value)
+ * @mixin \Eloquent
+ */
 class PasswordReset extends BaseModel
 {
     use Notifiable;

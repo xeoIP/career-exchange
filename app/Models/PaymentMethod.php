@@ -4,6 +4,34 @@ namespace App\Models;
 
 use App\Models\Scopes\ActiveScope;
 
+/**
+ * App\Models\PaymentMethod
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string|null $display_name
+ * @property string|null $description
+ * @property int|null $has_ccbox
+ * @property string|null $countries Countries codes separated by comma.
+ * @property int|null $lft
+ * @property int|null $rgt
+ * @property int|null $depth
+ * @property int|null $active
+ * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payment
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereCountries($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereDepth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereDisplayName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereHasCcbox($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PaymentMethod whereRgt($value)
+ * @mixin \Eloquent
+ */
 class PaymentMethod extends BaseModel
 {
     /**

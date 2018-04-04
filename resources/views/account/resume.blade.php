@@ -5,6 +5,14 @@
 ================================================== -->
 <div id="titlebar" class="resume">
 	<div class="container">
+
+		<div class="alert alert-danger row">
+			<ul>
+				<p class="col-sm-8">Looks like you do not have profile yet. please create one </p> <p class=" col-sm-4 text-right" > <a href="{{route('profile.builder.step_one')}}"><button>Create one now</button></a> </p>
+				<strong class="alert-danger"><p class="text-center">THIS IS JUST A PREVIEW OF HOW YOUR PROFILE CAN LOOK LIKE</p></strong>
+			</ul>
+		</div>
+
 		<div class="ten columns">
 			<div class="resume-titlebar">
 					@if (!empty($gravatar))

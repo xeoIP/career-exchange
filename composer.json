@@ -12,6 +12,7 @@
         "collizo4sky/omnipay-2checkout": "^1.5",
         "creativeorange/gravatar": "~1.0",
         "cviebrock/eloquent-sluggable": "^4.0",
+        "doctrine/dbal": "~2.3",
         "graham-campbell/flysystem": "^4.0.0",
         "greggilbert/recaptcha": "dev-master",
         "guzzlehttp/guzzle": "6.*",
@@ -25,7 +26,8 @@
         "laravel-notification-channels/twilio": "^2.0",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
-        "laravelcollective/html": "^5.3.0",
+        "laravel/tinker": "^1.0",
+        "laravelcollective/html": "^5.4.0",
         "league/csv": "^8.0",
         "league/flysystem-aws-s3-v3": "~1.0",
         "league/flysystem-rackspace": "~1.0",
@@ -41,11 +43,11 @@
         "spatie/laravel-backup": "^3.1",
         "torann/laravel-meta-tags": "^3.0",
         "unicodeveloper/laravel-password": "1.0.*",
-        "watson/sitemap": "2.0.*",
-        "doctrine/dbal": "~2.3"
+        "watson/sitemap": "2.0.*"
     },
     "require-dev": {
-      "filp/whoops": "~2.0",
+        "barryvdh/laravel-ide-helper": "2.4.3",
+        "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~6.0",

@@ -3,6 +3,42 @@
 namespace App\Models;
 
 
+/**
+ * App\Models\Currency
+ *
+ * @property int $id
+ * @property string $code
+ * @property string|null $name
+ * @property string|null $html_entity From Github : An array of currency symbols as HTML entities
+ * @property string|null $font_arial
+ * @property string|null $font_code2000
+ * @property string|null $unicode_decimal
+ * @property string|null $unicode_hex
+ * @property int|null $in_left
+ * @property int|null $decimal_places Currency Decimal Places - ISO 4217
+ * @property string|null $decimal_separator
+ * @property string|null $thousand_separator
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Country[] $countries
+ * @property mixed $symbol
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereDecimalPlaces($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereDecimalSeparator($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereFontArial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereFontCode2000($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereHtmlEntity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereInLeft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereThousandSeparator($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereUnicodeDecimal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereUnicodeHex($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Currency whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Currency extends BaseModel
 {
     /**

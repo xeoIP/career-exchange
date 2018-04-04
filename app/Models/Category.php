@@ -10,6 +10,50 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Prologue\Alerts\Facades\Alert;
 
+/**
+ * App\Models\Category
+ *
+ * @property int $id
+ * @property string|null $translation_lang
+ * @property int|null $translation_of
+ * @property int|null $parent_id
+ * @property string $name
+ * @property string|null $slug
+ * @property string|null $description
+ * @property string|null $picture
+ * @property string|null $css_class
+ * @property int|null $lft
+ * @property int|null $rgt
+ * @property int|null $depth
+ * @property string|null $type Only select this for parent categories
+ * @property int|null $active
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $children
+ * @property-read mixed $slug_or_name
+ * @property-read mixed $tid
+ * @property-read \App\Models\Category $lang
+ * @property-read \App\Models\Language|null $language
+ * @property-read \App\Models\Category|null $parent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $translated
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category findSimilarSlugs(\Illuminate\Database\Eloquent\Model $model, $attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category trans()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category transIn($languageCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereCssClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereDepth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category wherePicture($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereTranslationLang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereTranslationOf($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereType($value)
+ * @mixin \Eloquent
+ */
 class Category extends BaseModel
 {
     use Sluggable, SluggableScopeHelpers, TranslatedTrait;

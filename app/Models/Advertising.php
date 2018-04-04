@@ -4,6 +4,26 @@ namespace App\Models;
 
 use App\Models\Scopes\ActiveScope;
 
+/**
+ * App\Models\Advertising
+ *
+ * @property int $id
+ * @property string $slug
+ * @property string|null $provider_name
+ * @property string|null $tracking_code_large
+ * @property string|null $tracking_code_medium
+ * @property string|null $tracking_code_small
+ * @property int|null $active
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Advertising whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Advertising whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Advertising whereProviderName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Advertising whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Advertising whereTrackingCodeLarge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Advertising whereTrackingCodeMedium($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Advertising whereTrackingCodeSmall($value)
+ * @mixin \Eloquent
+ */
 class Advertising extends BaseModel
 {
     /**

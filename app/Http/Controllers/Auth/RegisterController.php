@@ -91,7 +91,8 @@ class RegisterController extends FrontController
 		// Conditions to Verify User's Email or Phone
         $emailVerificationRequired = config('settings.email_verification') == 1 && $request->filled('email');
         $phoneVerificationRequired = config('settings.phone_verification') == 1 && $request->filled('phone');
-		
+
+
 		// Store User
 		$userInfo = [
 			'country_code'   => config('country.code'),
@@ -123,7 +124,8 @@ class RegisterController extends FrontController
 		// Save the User into database
 		$user = new User($userInfo);
 		$user->save();
-		
+
+
 		// Add Job seekers resume
 		if ($request->input('user_type') == 3) {
 			if ($request->hasFile('filename')) {

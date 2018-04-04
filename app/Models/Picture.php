@@ -8,6 +8,25 @@ use App\Models\Scopes\ActiveScope;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
+/**
+ * App\Models\Picture
+ *
+ * @property int $id
+ * @property int|null $post_id
+ * @property string|null $filename
+ * @property int|null $active Set at 0 on updating the ad
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Models\Language $language
+ * @property-read \App\Models\Post|null $post
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Picture whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Picture whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Picture whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Picture whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Picture wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Picture whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Picture extends BaseModel
 {
     /**

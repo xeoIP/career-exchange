@@ -5,6 +5,31 @@ namespace App\Models;
 use App\Helpers\Geo;
 use App\Models\Traits\CountryTrait;
 
+/**
+ * App\Models\SubAdmin2
+ *
+ * @property int $id
+ * @property string $code
+ * @property string|null $country_code
+ * @property string|null $subadmin1_code
+ * @property string|null $name
+ * @property string|null $asciiname
+ * @property int|null $active
+ * @property-read \App\Models\Country|null $country
+ * @property-read \App\Models\Language $language
+ * @property-read \App\Models\SubAdmin1|null $subAdmin1
+ * @property-read \App\Models\TimeZone $timeZone
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 countryOf($countryCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 currentCountry()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 whereAsciiname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 whereCountryCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SubAdmin2 whereSubadmin1Code($value)
+ * @mixin \Eloquent
+ */
 class SubAdmin2 extends BaseModel
 {
     use CountryTrait;

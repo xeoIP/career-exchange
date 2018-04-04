@@ -5,6 +5,40 @@ namespace App\Models;
 use App\Models\Scopes\ActiveScope;
 use Larapen\Admin\app\Models\LanguageFeatures;
 
+/**
+ * App\Models\Language
+ *
+ * @property int $id
+ * @property string $abbr
+ * @property string|null $locale
+ * @property string $name
+ * @property string|null $native
+ * @property string|null $flag
+ * @property string $app_name
+ * @property string|null $script
+ * @property int|null $russian_pluralization
+ * @property int $active
+ * @property int $default
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property string|null $deleted_at
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereAbbr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereAppName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereDefault($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereFlag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereNative($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereRussianPluralization($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereScript($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Language extends BaseModel
 {
     use LanguageFeatures;

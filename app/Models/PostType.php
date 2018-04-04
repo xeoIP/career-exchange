@@ -5,6 +5,33 @@ namespace App\Models;
 use App\Models\Traits\TranslatedTrait;
 use App\Models\Scopes\ActiveScope;
 
+/**
+ * App\Models\PostType
+ *
+ * @property int $id
+ * @property string|null $translation_lang
+ * @property int|null $translation_of
+ * @property string $name
+ * @property int|null $lft
+ * @property int|null $rgt
+ * @property int|null $depth
+ * @property int|null $active
+ * @property-read mixed $tid
+ * @property-read \App\Models\Language|null $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PostType[] $translated
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType trans()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType transIn($languageCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereDepth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereTranslationLang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PostType whereTranslationOf($value)
+ * @mixin \Eloquent
+ */
 class PostType extends BaseModel
 {
     use TranslatedTrait;

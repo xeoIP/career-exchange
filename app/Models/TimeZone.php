@@ -5,6 +5,28 @@ namespace App\Models;
 
 use App\Models\Traits\CountryTrait;
 
+/**
+ * App\Models\TimeZone
+ *
+ * @property int $id
+ * @property string $country_code
+ * @property string|null $time_zone_id
+ * @property float|null $gmt
+ * @property float|null $dst
+ * @property float|null $raw
+ * @property-read \App\Models\Country $country
+ * @property-read \App\Models\Language $language
+ * @property-read \App\Models\TimeZone $timeZone
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone countryOf($countryCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone currentCountry()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone whereCountryCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone whereDst($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone whereGmt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone whereRaw($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TimeZone whereTimeZoneId($value)
+ * @mixin \Eloquent
+ */
 class TimeZone extends BaseModel
 {
     use CountryTrait;

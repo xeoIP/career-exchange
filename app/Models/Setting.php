@@ -7,6 +7,39 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Prologue\Alerts\Facades\Alert;
 
+/**
+ * App\Models\Setting
+ *
+ * @property int $id
+ * @property string $key
+ * @property string $name
+ * @property string|null $value
+ * @property string|null $description
+ * @property string $field
+ * @property int|null $parent_id
+ * @property int|null $lft
+ * @property int|null $rgt
+ * @property int|null $depth
+ * @property int $active
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereDepth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereField($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting whereValue($value)
+ * @mixin \Eloquent
+ */
 class Setting extends BaseModel
 {
     protected $table    = 'settings';

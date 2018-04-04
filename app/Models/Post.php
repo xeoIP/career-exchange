@@ -12,6 +12,108 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Jenssegers\Date\Date;
 
+/**
+ * App\Models\Post
+ *
+ * @property int $id
+ * @property string|null $country_code
+ * @property int|null $user_id
+ * @property int $category_id
+ * @property int|null $post_type_id
+ * @property string|null $company_name
+ * @property string|null $company_description
+ * @property string|null $company_website
+ * @property string|null $logo
+ * @property string $title
+ * @property string $description
+ * @property float|null $salary_min
+ * @property float|null $salary_max
+ * @property int|null $salary_type_id
+ * @property int|null $negotiable
+ * @property string|null $start_date
+ * @property string $contact_name
+ * @property string|null $email
+ * @property string|null $phone
+ * @property int|null $phone_hidden
+ * @property string|null $address
+ * @property int $city_id
+ * @property float|null $lon longitude in decimal degrees (wgs84)
+ * @property float|null $lat latitude in decimal degrees (wgs84)
+ * @property string|null $ip_addr
+ * @property int|null $visits
+ * @property string|null $email_token
+ * @property string|null $phone_token
+ * @property string|null $tmp_token
+ * @property int|null $verified_email
+ * @property int|null $verified_phone
+ * @property int|null $reviewed
+ * @property int|null $featured
+ * @property int|null $archived
+ * @property string|null $partner
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @property-read \App\Models\Category $category
+ * @property-read \App\Models\City $city
+ * @property-read \App\Models\Country|null $country
+ * @property-read mixed $created_at_ta
+ * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \App\Models\Payment $onePayment
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Picture[] $pictures
+ * @property-read \App\Models\PostType|null $postType
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SavedPost[] $savedByUsers
+ * @property-read \App\Models\TimeZone $timeZone
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post archived()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post countryOf($countryCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post currentCountry()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post reviewed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post unarchived()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post unreviewed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post unverified()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post verified()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereArchived($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCompanyDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCompanyWebsite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereContactName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCountryCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereEmailToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIpAddr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereNegotiable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePartner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePhoneHidden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePhoneToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePostTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereReviewed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSalaryMax($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSalaryMin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSalaryTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereTmpToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereVerifiedEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereVerifiedPhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereVisits($value)
+ * @mixin \Eloquent
+ */
 class Post extends BaseModel
 {
     use CountryTrait, Notifiable;

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Larapen\Admin\app\Models\Crud;
 
+/**
+ * App\Models\BaseUser
+ *
+ * @property-read \App\Models\Language $language
+ * @mixin \Eloquent
+ */
 class BaseUser extends Authenticatable
 {
     use Crud, VerifiedTrait;

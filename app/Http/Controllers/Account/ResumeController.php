@@ -11,6 +11,7 @@ use Creativeorange\Gravatar\Facades\Gravatar;
 use App\Models\Post;
 use App\Models\SavedPost;
 use App\Models\Gender;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 use App\Helpers\Localization\Helpers\Country as CountryLocalizationHelper;
@@ -27,12 +28,21 @@ class ResumeController extends AccountBaseController
      */
     public function index()
     {
+      /*  $user = Auth::user();
+
+        if($user->social_security == null)
+        {
+            return view('account.resume');
+        }*/
+
+
         $data = [];
+       // $profileData = [];
 
         $data['countries'] = CountryLocalizationHelper::transAll(CountryLocalization::getCountries());
         $data['genders'] = Gender::trans()->get();
         $data['userTypes'] = UserType::all();
-		    $data['gravatar'] = (!empty($this->user->email)) ? Gravatar::fallback(url('images/user.jpg'))->get($this->user->email) : null;
+        $data['gravatar'] = (!empty($this->user->email)) ? Gravatar::fallback(url('images/user.jpg'))->get($this->user->email) : null;
 
         // Mini Stats
         $data['countPostsVisits'] = DB::table('posts')
@@ -44,9 +54,9 @@ class ResumeController extends AccountBaseController
         $data['countPosts'] = Post::currentCountry()
             ->where('user_id', $this->user->id)
             ->count();
-        $data['countFavoritePosts'] = SavedPost::whereHas('post', function($query) {
-                $query->currentCountry();
-            })->where('user_id', $this->user->id)
+        $data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+            $query->currentCountry();
+        })->where('user_id', $this->user->id)
             ->count();
 
         $data['resume'] = Resume::where('user_id', $this->user->id)->first();
@@ -56,6 +66,24 @@ class ResumeController extends AccountBaseController
         MetaTag::set('description', t('My account on :app_name', ['app_name' => config('settings.app_name')]));
 
         return view('account.resume', $data);
+
+/*
+        $profileData['position'] = $user->position->name;
+        $profileData['additionalInfo'] = $user->preferences->additional_info;
+        //city country location ...
+        $profileData['website'] = $user->networks->website;
+        $profileData['email'] = $user->email;
+        $profileData['skills'] = $user->skills;
+        $profileData['position_roles'] = $user->positionRoles;
+        $profileData['education'] = $user->education;
+        $profileData['experience'] = $user->experience;
+        $profileData['preferences'] = $user->preferences;
+        $profileData['user_city'] = $user->userCity->name;
+
+        $user_city_code_parts = explode('.',$user->userCity->subadmin1_code);
+        $profileData['user_city_code'] = end($user_city_code_parts);
+
+        return view('account.resume_view', $data)->with('profileData', $profileData);*/
     }
 
     /**
@@ -98,59 +126,59 @@ class ResumeController extends AccountBaseController
             $user->receive_advice = $request->input('receive_advice');
         }
 
-		// Email verification key generation
-		if ($emailVerificationRequired) {
-			$user->email_token = md5(microtime() . mt_rand());
-			$user->verified_email = 0;
-		}
+        // Email verification key generation
+        if ($emailVerificationRequired) {
+            $user->email_token = md5(microtime() . mt_rand());
+            $user->verified_email = 0;
+        }
 
-		// Phone verification key generation
-		if ($phoneVerificationRequired) {
-			$user->phone_token = mt_rand(100000, 999999);
-			$user->verified_phone = 0;
-		}
+        // Phone verification key generation
+        if ($phoneVerificationRequired) {
+            $user->phone_token = mt_rand(100000, 999999);
+            $user->verified_phone = 0;
+        }
 
-		// Don't logout the User (See User model)
-		if ($emailVerificationRequired || $phoneVerificationRequired) {
-			session(['emailOrPhoneChanged' => true]);
-		}
+        // Don't logout the User (See User model)
+        if ($emailVerificationRequired || $phoneVerificationRequired) {
+            session(['emailOrPhoneChanged' => true]);
+        }
 
         // Save User
         $user->save();
 
-		// Message Notification & Redirection
-		flash(t("Your details account has update successfully."))->success();
-		$nextUrl = config('app.locale') . '/account';
+        // Message Notification & Redirection
+        flash(t("Your details account has update successfully."))->success();
+        $nextUrl = config('app.locale') . '/account';
 
-		// Send Email Verification message
-		if ($emailVerificationRequired) {
-			$this->sendVerificationEmail($user);
-			$this->showReSendVerificationEmailLink($user, 'user');
-		}
+        // Send Email Verification message
+        if ($emailVerificationRequired) {
+            $this->sendVerificationEmail($user);
+            $this->showReSendVerificationEmailLink($user, 'user');
+        }
 
-		// Send Phone Verification message
-		if ($phoneVerificationRequired) {
-			// Save the Next URL before verification
-			session(['itemNextUrl' => $nextUrl]);
+        // Send Phone Verification message
+        if ($phoneVerificationRequired) {
+            // Save the Next URL before verification
+            session(['itemNextUrl' => $nextUrl]);
 
-			$this->sendVerificationSms($user);
-			$this->showReSendVerificationSmsLink($user, 'user');
+            $this->sendVerificationSms($user);
+            $this->showReSendVerificationSmsLink($user, 'user');
 
-			// Go to Phone Number verification
-			$nextUrl = config('app.locale') . '/verify/user/phone/';
-		}
+            // Go to Phone Number verification
+            $nextUrl = config('app.locale') . '/verify/user/phone/';
+        }
 
         // Save Resume
         if ($request->hasFile('filename')) {
-		    // Get Resume
+            // Get Resume
             $resume = Resume::where('user_id', $this->user->id)->first();
 
             // Create resume if doesn't exists
             if (empty($resume)) {
                 $resumeInfo = [
                     'country_code' => config('country.code'),
-                    'user_id'      => $this->user->id,
-                    'active'       => 1,
+                    'user_id' => $this->user->id,
+                    'active' => 1,
                 ];
                 $resume = new Resume($resumeInfo);
                 $resume->save();
@@ -160,7 +188,7 @@ class ResumeController extends AccountBaseController
             $resume->save();
         }
 
-		// Redirection
+        // Redirection
         return redirect($nextUrl);
     }
 

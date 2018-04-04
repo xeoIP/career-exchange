@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Larapen\Admin\app\Models\Crud;
 
+/**
+ * App\Models\BaseModel
+ *
+ * @property-read \App\Models\Language $language
+ * @mixin \Eloquent
+ */
 class BaseModel extends Model
 {
     use Crud, ActiveTrait, VerifiedTrait;

@@ -20,10 +20,10 @@
 */
 Route::group([
     'middleware' => ['web'],
-    'namespace'  => 'App\Http\Controllers',
-], function($router) {
+    'namespace' => 'App\Http\Controllers',
+], function ($router) {
     // AJAX
-    Route::group(['prefix' => 'ajax'], function($router) {
+    Route::group(['prefix' => 'ajax'], function ($router) {
         Route::post('category/sub-categories', 'Ajax\CategoryController@getSubCategories');
         Route::post('save/post', 'Ajax\PostController@savePost');
         Route::post('save/search', 'Ajax\PostController@saveSearch');
@@ -46,20 +46,19 @@ Route::group([
 |
 */
 Route::group([
-    'prefix'     => LaravelLocalization::setLocale(),
+    'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['local'],
-    'namespace'  => 'App\Http\Controllers',
-], function($router) {
-    Route::group(['middleware' => ['web']], function($router) {
+    'namespace' => 'App\Http\Controllers',
+], function ($router) {
+    Route::group(['middleware' => ['web']], function ($router) {
         // HOMEPAGE
-        Route::group(['middleware' => 'httpCache:yes'], function($router) {
+        Route::group(['middleware' => 'httpCache:yes'], function ($router) {
             Route::get('/', 'HomeController@index');
             Route::get(LaravelLocalization::transRoute('routes.countries'), 'CountriesController@index');
         });
 
-
         // AUTH
-        Route::group(['middleware' => ['guest', 'preventBackHistory']], function() {
+        Route::group(['middleware' => ['guest', 'preventBackHistory']], function () {
             // Registration Routes...
             Route::get(LaravelLocalization::transRoute('routes.register'), 'Auth\RegisterController@showRegistrationForm');
             Route::post(LaravelLocalization::transRoute('routes.register'), 'Auth\RegisterController@register');
@@ -69,17 +68,17 @@ Route::group([
             Route::get(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@showLoginForm');
             Route::post(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@login');
 
-			// Forgot Password Routes...
-			Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-			Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+            // Forgot Password Routes...
+            Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+            Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 
-			// Reset Password using Token
-			Route::get('password/token', 'Auth\ForgotPasswordController@showTokenRequestForm');
-			Route::post('password/token', 'Auth\ForgotPasswordController@sendResetToken');
+            // Reset Password using Token
+            Route::get('password/token', 'Auth\ForgotPasswordController@showTokenRequestForm');
+            Route::post('password/token', 'Auth\ForgotPasswordController@sendResetToken');
 
-			// Reset Password using Link (Core Routes...)
-			Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-			Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+            // Reset Password using Link (Core Routes...)
+            Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+            Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
             // Social Authentication
             Route::get('auth/facebook', 'Auth\SocialController@redirectToProvider');
@@ -91,18 +90,17 @@ Route::group([
         });
 
         // Email Address or Phone Number verification
-		$router->pattern('field', 'email|phone');
+        $router->pattern('field', 'email|phone');
         Route::get('verify/user/{id}/resend/email', 'Auth\RegisterController@reSendVerificationEmail');
-		Route::get('verify/user/{id}/resend/sms', 'Auth\RegisterController@reSendVerificationSms');
+        Route::get('verify/user/{id}/resend/sms', 'Auth\RegisterController@reSendVerificationSms');
         Route::get('verify/user/{field}/{token?}', 'Auth\RegisterController@verification');
         Route::post('verify/user/{field}/{token?}', 'Auth\RegisterController@verification');
 
         // User Logout
         Route::get(LaravelLocalization::transRoute('routes.logout'), 'Auth\LoginController@logout');
 
-
         // POSTS
-        Route::group(['namespace' => 'Post'], function($router) {
+        Route::group(['namespace' => 'Post'], function ($router) {
             $router->pattern('id', '[0-9]+');
             Route::get('posts/create/{tmpToken?}', 'CreateController@getForm');
             Route::post('posts/create', 'CreateController@postForm');
@@ -144,15 +142,15 @@ Route::group([
 
 
         // ACCOUNT
-        Route::group(['middleware' => ['auth', 'bannedUser', 'preventBackHistory'], 'namespace' => 'Account'], function($router) {
+        Route::group(['middleware' => ['auth', 'bannedUser', 'preventBackHistory'], 'namespace' => 'Account'], function ($router) {
             $router->pattern('id', '[0-9]+');
 
-            Route::get('account', 'EditController@index');
+            Route::get('account', 'EditController@index')->name('account.index');
             Route::put('account', 'EditController@updateDetails');
             Route::put('account/settings', 'EditController@updateSettings');
             Route::put('account/preferences', 'EditController@updatePreferences');
             Route::put('account/resume', 'ResumeController@resume');
-						Route::get('account/resume', 'ResumeController@index');
+            Route::get('account/resume', 'ResumeController@index');//->name('account.resume.view');//////////////////////
             Route::get('account/saved-search', 'PostsController@getSavedSearch');
 
             $router->pattern('pagePath', '(my-posts|archived|favorite|pending-approval|saved-search)+');
@@ -164,14 +162,14 @@ Route::group([
             Route::get('account/{pagePath}/{id}/delete', 'PostsController@delete');
             Route::post('account/{pagePath}/delete', 'PostsController@delete');
 
-			// Messages
-			Route::get('account/messages', 'MessagesController@index');
-			Route::post('account/messages/{id}/reply', 'MessagesController@reply');
-			Route::get('account/messages/{id}/delete', 'MessagesController@delete');
-			Route::post('account/messages/delete', 'MessagesController@delete');
+            // Messages
+            Route::get('account/messages', 'MessagesController@index');
+            Route::post('account/messages/{id}/reply', 'MessagesController@reply');
+            Route::get('account/messages/{id}/delete', 'MessagesController@delete');
+            Route::post('account/messages/delete', 'MessagesController@delete');
 
-			// Transactions
-			Route::get('account/transactions', 'TransactionsController@index');
+            // Transactions
+            Route::get('account/transactions', 'TransactionsController@index');
 
             // Close User's account
             Route::get('account/close', 'CloseController@index');
@@ -194,7 +192,7 @@ Route::group([
 
 
         // STATICS PAGES
-        Route::group(['middleware' => 'httpCache:yes'], function($router) {
+        Route::group(['middleware' => 'httpCache:yes'], function ($router) {
             Route::get(LaravelLocalization::transRoute('routes.page'), 'PageController@index');
             Route::get(LaravelLocalization::transRoute('routes.contact'), 'PageController@contact');
             Route::post(LaravelLocalization::transRoute('routes.contact'), 'PageController@contactPost');
@@ -204,16 +202,45 @@ Route::group([
 
         // DYNAMIC URL PAGES
         $router->pattern('id', '[0-9]+');
-		$router->pattern('username', '[a-zA-Z0-9]+');
+        $router->pattern('username', '[a-zA-Z0-9]+');
         Route::get(LaravelLocalization::transRoute('routes.search'), 'Search\SearchController@index');
         Route::get(LaravelLocalization::transRoute('routes.search-user'), 'Search\UserController@index');
-		Route::get(LaravelLocalization::transRoute('routes.search-username'), 'Search\UserController@profile');
+        Route::get(LaravelLocalization::transRoute('routes.search-username'), 'Search\UserController@profile');
         Route::get(LaravelLocalization::transRoute('routes.search-company'), 'Search\CompanyController@index');
         Route::get(LaravelLocalization::transRoute('routes.search-city'), 'Search\CityController@index');
         Route::get(LaravelLocalization::transRoute('routes.search-subCat'), 'Search\CategoryController@index');
         Route::get(LaravelLocalization::transRoute('routes.search-cat'), 'Search\CategoryController@index');
+
+        //Profile builder
+        Route::group(['middleware' => ['auth', 'bannedUser']], function () {
+            //step 1
+            Route::get('/profile/builder/1', 'ProfileBuilderController@stepOne')->name('profile.builder.step_one');
+            Route::post('/profile/builder/1', 'ProfileBuilderController@stepOnePost')->name('profile.builder.step_one_post');
+
+            //step 2
+            Route::get('/profile/builder/2', 'ProfileBuilderController@stepTwo')->name('profile.builder.step_two');
+            Route::post('/profile/builder/2', 'ProfileBuilderController@stepTwoPost')->name('profile.builder.step_two_post');
+
+            //step 3
+            Route::get('/profile/builder/3', 'ProfileBuilderController@stepThree')->name('profile.builder.step_three');
+            Route::post('/profile/builder/3', 'ProfileBuilderController@stepThreePost')->name('profile.builder.step_three_post');
+
+            //step 4
+            Route::get('/profile/builder/4', 'ProfileBuilderController@stepFour')->name('profile.builder.step_four');
+            Route::post('/profile/builder/4', 'ProfileBuilderController@stepFourPost')->name('profile.builder.step_four_post');
+
+            //step 5
+            Route::get('/profile/builder/5', 'ProfileBuilderController@stepFive')->name('profile.builder.step_five');
+           // Route::post('/profile/builder/5', 'ProfileBuilderController@stepFivePost')->name('profile.builder.step_five_post');
+            Route::post('/profile/builder/5', 'ProfileBuilderController@store')->name('profile.builder.store');
+
+            Route::get('/profile/builder/view', 'ProfileBuilderController@show')->name('account.resume.view');
+        });
     });
 });
+
+//
+
 
 /*
 |--------------------------------------------------------------------------
@@ -225,9 +252,9 @@ Route::group([
 */
 Route::group([
     'middleware' => ['admin', 'bannedUser', 'installChecker', 'preventBackHistory'],
-    'prefix'     => config('larapen.admin.route_prefix', 'admin'),
-    'namespace'  => 'App\Http\Controllers\Admin',
-], function() {
+    'prefix' => config('larapen.admin.route_prefix', 'admin'),
+    'namespace' => 'App\Http\Controllers\Admin',
+], function () {
     // CRUD
     CRUD::resource('advertising', 'AdvertisingController');
     CRUD::resource('blacklist', 'BlacklistController');

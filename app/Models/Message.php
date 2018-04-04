@@ -5,6 +5,36 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * App\Models\Message
+ *
+ * @property int $id
+ * @property int|null $post_id
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $message
+ * @property string|null $filename File attach (e.i. resume)
+ * @property int $reply_sent
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \App\Models\Post|null $post
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereReplySent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Message whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Message extends BaseModel
 {
 	use Notifiable;

@@ -12,5 +12,14 @@
   "devDependencies": {
     "cross-env": "^5.0.1",
     "laravel-mix": "^1.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "^3.3.1",
+    "jquery-typeahead": "^2.10.4",
+    "jquery-year-select": "^1.2.0",
+    "mdbootstrap": "^4.5.0",
+    "popper.js": "^1.12.9"
   }
 }

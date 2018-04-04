@@ -3,6 +3,20 @@
 namespace App\Models;
 
 
+/**
+ * App\Models\Continent
+ *
+ * @property int $id
+ * @property string $code
+ * @property string $name
+ * @property int|null $active
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Continent whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Continent whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Continent whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Continent whereName($value)
+ * @mixin \Eloquent
+ */
 class Continent extends BaseModel
 {
     /**

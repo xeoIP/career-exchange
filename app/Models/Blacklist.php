@@ -3,6 +3,19 @@
 namespace App\Models;
 
 
+/**
+ * App\Models\Blacklist
+ *
+ * @property int $id
+ * @property string|null $type
+ * @property string $entry
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blacklist ofType($type)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blacklist whereEntry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blacklist whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blacklist whereType($value)
+ * @mixin \Eloquent
+ */
 class Blacklist extends BaseModel
 {
     /**

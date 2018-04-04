@@ -1,0 +1,352 @@
+#profile_builder {
+  #import-photo {
+    label span, legend span {
+      color: #ffffff;
+    }
+  }
+  select.btn-mini {
+    height: auto;
+    width: 80px;
+  }
+
+  input[type="text"] {
+    height: 15px;
+    padding: 20px 10px;
+    line-height: 28px;
+  }
+
+  .yearselect select {
+    color: red;
+    height: 15px;
+    padding: 20px 10px;
+    line-height: 28px;
+  }
+
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0px;
+    font-size: 12px;
+    line-height: 1.42;
+    border-radius: 15px;
+    margin-top: 15px;
+  }
+
+  label.btn span {
+    font-size: 1.5em;
+  }
+
+  label input[type="radio"] ~ i.fa.fa-circle-o {
+    color: #c8c8c8;
+    display: inline;
+  }
+
+  label input[type="radio"] ~ i.fa.fa-dot-circle-o {
+    display: none;
+  }
+
+  label input[type="radio"]:checked ~ i.fa.fa-circle-o {
+    display: none;
+  }
+
+  label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o {
+    color: #7AA3CC;
+    display: inline;
+  }
+
+  label:hover input[type="radio"] ~ i.fa {
+    color: #7AA3CC;
+  }
+
+  div[data-toggle="buttons"] label.active {
+    color: #7AA3CC;
+  }
+
+  div[data-toggle="buttons"] label {
+
+    outline: 0 !important;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 2em;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: top;
+    cursor: pointer;
+    background: none;
+    border: 0 solid #c8c8c8;
+    border-radius: 3px;
+    color: #c8c8c8;
+
+  }
+
+  div[data-toggle="buttons"] label:hover {
+    color: #7AA3CC;
+  }
+
+  div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .delSkillInputBtn .glyphicon-trash {
+    margin-top: 20px;
+    padding-left: 10px;
+  }
+
+  #additionalSkills .glyphicon-trash {
+    margin-top: 6px;
+    padding-left: 10px;
+  }
+
+  /*.linksContainer{
+      border-left: solid 1pt grey;
+  }*/
+
+  .lineInput input[type=text] {
+    border: none;
+    background: none;
+    border-bottom: 2px solid #337ab7;
+    margin-top: 0;
+    margin-bottom: 2%;
+
+  }
+
+  .lineInput input[type=text]:hover {
+    border-bottom: 2px solid green;
+  }
+
+  .lineInput input[type=text]:focus {
+    border-bottom: 2px solid green;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+  }
+
+  div:empty {
+    display: none;
+  }
+
+  .yearselect {
+    margin-bottom: 4%;
+  }
+
+  .has-error {
+    border-color: red !important;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /**************************************/
+
+  #roles {
+    @media print {
+      *, :after, :before {
+        color: #000 !important;
+        text-shadow: none !important;
+        background: 0 0 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+      }
+    }
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    :after, :before {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .col-sm-6 {
+      position: relative;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    @media (min-width: 768px) {
+      .col-sm-6 {
+        float: left;
+      }
+      .col-sm-6 {
+        width: 50%;
+      }
+    }
+    .btn {
+      display: inline-block;
+      padding: 4px 10px;
+      margin-bottom: 0;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-image: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+    .btn.active:focus, .btn:active:focus, .btn:focus {
+      outline: thin dotted;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+    .btn:focus, .btn:hover {
+      color: #333;
+      text-decoration: none;
+    }
+    .btn.active, .btn:active {
+      background-image: none;
+      outline: 0;
+      -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+      box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    }
+    .btn-default {
+      color: #333;
+      background-color: #fff;
+      border-color: #ccc;
+    }
+    .btn-default:focus {
+      color: #333;
+      background-color: #e6e6e6;
+      border-color: #8c8c8c;
+    }
+    .btn-default:hover {
+      color: #333;
+      background-color: #e6e6e6;
+      border-color: #adadad;
+    }
+    .btn-default.active, .btn-default:active {
+      color: #333;
+      background-color: #e6e6e6;
+      border-color: #adadad;
+    }
+    .btn-default.active:focus, .btn-default.active:hover, .btn-default:active:focus, .btn-default:active:hover {
+      color: #333;
+      background-color: #d4d4d4;
+      border-color: #8c8c8c;
+    }
+    .btn-default.active, .btn-default:active {
+      background-image: none;
+    }
+    .btn-group {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .btn-group > .btn {
+      position: relative;
+      float: left;
+    }
+    .btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover {
+      z-index: 2;
+    }
+    .btn-group .btn + .btn {
+      margin-left: -1px;
+    }
+    .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+      border-radius: 0;
+    }
+    .btn-group > .btn:first-child {
+      margin-left: 0;
+    }
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .btn-group > .btn:last-child:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    div {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    ::-webkit-input-placeholder {
+      color: #909090;
+      opacity: 1;
+    }
+    :-moz-placeholder {
+      color: #909090;
+      opacity: 1;
+    }
+    ::-moz-placeholder {
+      color: #909090;
+      opacity: 1;
+    }
+    :-ms-input-placeholder {
+      color: #909090;
+      opacity: 1;
+    }
+    #profile_builder div:empty {
+      display: none;
+    }
+    .btn, .btn:disabled:active, .btn:disabled:focus, .btn:disabled:hover {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    }
+    .btn-default.active:not([disabled]):not(.disabled), .btn-default.active:not([disabled]):not(.disabled):focus, .btn-default:focus, .btn-default:not([disabled]):not(.disabled):active, .btn-default:not([disabled]):not(.disabled):active:focus, .btn.active:not([disabled]):not(.disabled), .btn:active, .btn:focus, .btn:hover, .btn:not([disabled]):not(.disabled):active {
+      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    }
+    :disabled {
+      pointer-events: none !important;
+    }
+    .btn {
+      color: #fff !important;
+    }
+    .btn {
+      padding: .60rem 1.14rem;
+      font-size: .81rem;
+      -webkit-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+      border: 0;
+      border-radius: .125rem;
+      cursor: pointer;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+    .btn:active, .btn:focus, .btn:hover {
+      outline: 0;
+    }
+    .btn-group .btn {
+      margin: 0;
+    }
+    .btn-default {
+      background-color: #2bbbad !important;
+      color: #fff !important;
+    }
+    .btn-default:hover {
+      background-color: #30cfc0;
+    }
+    .btn-default.active, .btn-default:active, .btn-default:focus {
+      background-color: #186860;
+    }
+    .btn-default:not([disabled]):not(.disabled).active, .btn-default:not([disabled]):not(.disabled):active {
+      background-color: #186860 !important;
+    }
+  }
+
+}
+

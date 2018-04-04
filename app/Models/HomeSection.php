@@ -4,6 +4,32 @@ namespace App\Models;
 
 use App\Models\Scopes\ActiveScope;
 
+/**
+ * App\Models\HomeSection
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $method
+ * @property array $options
+ * @property string $view
+ * @property int|null $parent_id
+ * @property int|null $lft
+ * @property int|null $rgt
+ * @property int|null $depth
+ * @property int $active
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereDepth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereOptions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\HomeSection whereView($value)
+ * @mixin \Eloquent
+ */
 class HomeSection extends BaseModel
 {
     /**

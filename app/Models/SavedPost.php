@@ -3,6 +3,24 @@
 namespace App\Models;
 
 
+/**
+ * App\Models\SavedPost
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property int|null $post_id
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Models\Language $language
+ * @property-read \App\Models\Post|null $post
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SavedPost whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SavedPost whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SavedPost wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SavedPost whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SavedPost whereUserId($value)
+ * @mixin \Eloquent
+ */
 class SavedPost extends BaseModel
 {
     /**

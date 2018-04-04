@@ -4,6 +4,32 @@ namespace App\Models;
 
 use App\Models\Traits\TranslatedTrait;
 
+/**
+ * App\Models\MetaTag
+ *
+ * @property int $id
+ * @property string $translation_lang
+ * @property int $translation_of
+ * @property string|null $page
+ * @property string|null $title
+ * @property string|null $description
+ * @property string|null $keywords
+ * @property int $active
+ * @property-read mixed $tid
+ * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MetaTag[] $translated
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag trans()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag transIn($languageCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag whereKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag wherePage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag whereTranslationLang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MetaTag whereTranslationOf($value)
+ * @mixin \Eloquent
+ */
 class MetaTag extends BaseModel
 {
     use TranslatedTrait;

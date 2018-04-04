@@ -5,6 +5,28 @@ namespace App\Models;
 use App\Models\Scopes\ActiveScope;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * App\Models\Resume
+ *
+ * @property int $id
+ * @property string $country_code
+ * @property int $user_id
+ * @property string $filename
+ * @property int|null $active
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $post
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume whereCountryCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Resume extends BaseModel
 {
     /**

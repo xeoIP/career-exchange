@@ -4,6 +4,19 @@ namespace App\Models;
 
 use App\Models\Scopes\ActiveScope;
 
+/**
+ * App\Models\UserType
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property int|null $active
+ * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserType whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserType whereName($value)
+ * @mixin \Eloquent
+ */
 class UserType extends BaseModel
 {
     /**

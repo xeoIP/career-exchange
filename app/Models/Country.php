@@ -6,6 +6,64 @@ use App\Models\Scopes\ActiveScope;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 
+/**
+ * App\Models\Country
+ *
+ * @property int $id
+ * @property string $code
+ * @property string|null $iso3
+ * @property int|null $iso_numeric
+ * @property string|null $fips
+ * @property string|null $name
+ * @property string|null $asciiname
+ * @property string|null $capital
+ * @property int|null $area
+ * @property int|null $population
+ * @property string|null $continent_code
+ * @property string|null $tld
+ * @property string|null $currency_code
+ * @property string|null $phone
+ * @property string|null $postal_code_format
+ * @property string|null $postal_code_regex
+ * @property string|null $languages
+ * @property string|null $neighbours
+ * @property string|null $equivalent_fips_code
+ * @property string $admin_type
+ * @property int|null $admin_field_active
+ * @property int|null $active
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Models\Continent|null $continent
+ * @property-read \App\Models\Currency|null $currency
+ * @property-read mixed $icode
+ * @property-read \App\Models\Language $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereAdminFieldActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereAdminType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereArea($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereAsciiname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereCapital($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereContinentCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereCurrencyCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereEquivalentFipsCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereFips($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereIso3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereIsoNumeric($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereLanguages($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereNeighbours($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country wherePopulation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country wherePostalCodeFormat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country wherePostalCodeRegex($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereTld($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Country extends BaseModel
 {
     /**
@@ -153,7 +211,12 @@ class Country extends BaseModel
     {
         return $this->attributes['code'];
     }
-    
+
+    public function getAllCountries()
+    {
+        return $this::withoutGlobalScopes()->get();
+    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

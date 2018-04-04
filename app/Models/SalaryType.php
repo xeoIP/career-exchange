@@ -5,6 +5,32 @@ namespace App\Models;
 use App\Models\Traits\TranslatedTrait;
 use App\Models\Scopes\ActiveScope;
 
+/**
+ * App\Models\SalaryType
+ *
+ * @property int $id
+ * @property string|null $translation_lang
+ * @property int|null $translation_of
+ * @property string $name
+ * @property int|null $lft
+ * @property int|null $rgt
+ * @property int|null $depth
+ * @property int|null $active
+ * @property-read mixed $tid
+ * @property-read \App\Models\Language|null $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SalaryType[] $translated
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType trans()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType transIn($languageCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereDepth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereTranslationLang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SalaryType whereTranslationOf($value)
+ * @mixin \Eloquent
+ */
 class SalaryType extends BaseModel
 {
     use TranslatedTrait;

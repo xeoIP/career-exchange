@@ -10,6 +10,58 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Prologue\Alerts\Facades\Alert;
 
+/**
+ * App\Models\Page
+ *
+ * @property int $id
+ * @property string|null $translation_lang
+ * @property int|null $translation_of
+ * @property int|null $parent_id
+ * @property string $type
+ * @property string|null $name
+ * @property string|null $slug
+ * @property string|null $title
+ * @property string|null $picture
+ * @property string|null $content
+ * @property int|null $lft
+ * @property int|null $rgt
+ * @property int|null $depth
+ * @property string|null $name_color
+ * @property string|null $title_color
+ * @property int $excluded_from_footer
+ * @property int|null $active
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read mixed $slug_or_name
+ * @property-read mixed $tid
+ * @property-read \App\Models\Language|null $language
+ * @property-read \App\Models\Page|null $parent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $translated
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page findSimilarSlugs(\Illuminate\Database\Eloquent\Model $model, $attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page trans()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page transIn($languageCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page type($type)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereDepth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereExcludedFromFooter($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereNameColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page wherePicture($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereTitleColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereTranslationLang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereTranslationOf($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Page extends BaseModel
 {
     use Sluggable, SluggableScopeHelpers, TranslatedTrait;

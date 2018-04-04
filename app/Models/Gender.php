@@ -4,6 +4,24 @@ namespace App\Models;
 
 use App\Models\Traits\TranslatedTrait;
 
+/**
+ * App\Models\Gender
+ *
+ * @property int $id
+ * @property string|null $translation_lang
+ * @property int|null $translation_of
+ * @property string|null $name
+ * @property-read mixed $tid
+ * @property-read \App\Models\Language|null $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Gender[] $translated
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gender trans()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gender transIn($languageCode)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gender whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gender whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gender whereTranslationLang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gender whereTranslationOf($value)
+ * @mixin \Eloquent
+ */
 class Gender extends BaseModel
 {
     use TranslatedTrait;
