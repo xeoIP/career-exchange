@@ -1,0 +1,7 @@
+{
+  "name": "class/laravel-text-to-image",
+  "description": "Convert your formatted texts in any very pretty pictures.",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "require": {}
+}

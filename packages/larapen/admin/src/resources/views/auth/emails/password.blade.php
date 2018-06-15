@@ -1,0 +1,1 @@
+{{ trans('admin::messages.click_here_to_reset') }}: <a href="{{ $link = url(config('larapen.admin.route_prefix', 'admin') . '/password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>
