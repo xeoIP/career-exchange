@@ -15,7 +15,7 @@
                 <form action="{{ route('profile.builder.step_two_post') }}" method="post">
                     <div class="row center-block">
                         <div class="form-group col-sm-6">
-                            <label>Position: </label>
+                            <label>What type of position are you looking for? </label>
                             <select id="position" name="position[]" class="form-control">
                                 <option value="0"> Select one</option>
                                 @foreach($positions as $position)
@@ -24,12 +24,15 @@
                             </select>
 
                         </div>
-
+                            <label>What is your area of expertise? (Choose up to three)</label>
                         <!-- js generated role btn-s for Positions-->
                         <div id="roles" class="btn-group col-sm-6"></div>
+                        
+                        
                     </div>
 
                     <div class="row center-block">
+                    <label>How much experience do you have in each?</label>
                         <!-- js generated skills for roles (onchange & onBtnClick) -->
                         <div id="experience" class="col-sm-12"></div>
                     </div>
@@ -37,9 +40,9 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="col-sm-12">
-                                <label style="margin-bottom: 0">Enter 5 skills in descending order: </label>
+                                <label style="margin-bottom: 0">Rank your top 5 skills in descending order and years of experience: </label>
                                 <p>
-                                    <small class="text-muted"> How much experience do you have in each skill?
+                                    <small class="text-muted"> This would include technologies, languages, frameworks.
                                     </small>
                                 </p>
                             </div>
@@ -69,16 +72,16 @@
                         </div>
                         <div class="col-sm-6" id="additionalSkills">
                             <div class="col-sm-12">
-                                <label style="margin-bottom: 0"> Add additional skill</label>
+                                <label style="margin-bottom: 0"> Additional skills:</label>
                                 <p>
-                                    <small class="text-muted"> How much experience do you have in each skill?</small>
+                                    <small class="text-muted"> Choose up to three.</small>
                                 </p>
                             </div>
 
                             <div class="col-sm-8">
                                 <input type="text" name="additional_skill_1[]"
                                        class="form-control"
-                                       placeholder="what is the hardest skill that you know?"
+                                       placeholder="Add..."
                                        @if (isset($additionalSkills[0])) value="{{$additionalSkills[0][0]}}" @endif>
                             </div>
 

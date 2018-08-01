@@ -158,21 +158,7 @@
 
                                             @else
 
-                                                <!-- gender -->
-                                                <div class="form-group required <?php echo (isset($errors) and $errors->has('gender')) ? 'has-error' : ''; ?>">
-                                                    <label class="col-md-3 control-label">{{ t('Gender') }} <sup>*</sup></label>
-                                                    <div class="col-md-9">
-                                                        @if ($genders->count() > 0)
-                                                            @foreach ($genders as $gender)
-                                                                <label class="radio-inline" for="gender">
-                                                                    <input name="gender" id="gender-{{ $gender->tid }}" value="{{ $gender->tid }}"
-                                                                           type="radio" {{ (old('gender', $user->gender_id)==$gender->tid) ? 'checked="checked"' : '' }}>
-                                                                    {{ $gender->name }}
-                                                                </label>
-                                                            @endforeach
-                                                        @endif
-                                                    </div>
-                                                </div>
+                                               
 
                                                 <!-- name -->
                                                 <div class="form-group required <?php echo (isset($errors) and $errors->has('name')) ? 'has-error' : ''; ?>">

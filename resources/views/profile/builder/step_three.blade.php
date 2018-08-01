@@ -76,41 +76,25 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="col-sm-12">
-                                <label> Location preferences - you can add more then one city </label>
+                            <div class="form-group col-sm-12 ">
+                                <label> Require sponsorship now or future (H1-B Visa Status) </label>
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn active">
+                                        <input type="radio" name='require_sponsorship' value=1 checked
+                                                @if (old('require_sponsorship', $require_sponsorship) == '1') checked @endif>
+                                        <i class="fa fa-circle-o fa-2x"></i>
+                                        <i class="fa fa-dot-circle-o fa-2x"></i>
+                                        <span> Yes </span>
+                                    </label>
+                                    <label class="btn">
+                                        <input type="radio" name='require_sponsorship' value=0
+                                                @if (old('require_sponsorship', $require_sponsorship) == '0') checked @endif>
+                                        <i class="fa fa-circle-o fa-2x"></i>
+                                        <i class="fa fa-dot-circle-o fa-2x"></i>
+                                        <span> No </span>
+                                    </label>
                             </div>
-
-                            <div class="col-sm-8">
-                                <div id="locationPreferencesDiv">
-                                    <div class="typeahead__container">
-                                        <div class="typeahead__field">
-                                            <span class="typeahead__query">
-                                                <input class="js-typeahead-city {{ $errors->has('locations.0') ? 'has-error' : ''}}"
-                                                       name="locations[]" type="search"
-                                                       placeholder="Search" autocomplete="off"
-                                                       @if (isset($userLocation[0])) value="{{old('locations.0', $userLocation[0])}}"
-                                                       @else value="{{old('locations.0')}}"@endif>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="addCityInputBtn">
-                                    <span class="btn btn-primary btn-circle">+</span>
-                                </div>
                             </div>
-
-                            <div class="col-sm-4" id='delIconForCityDiv'>
-                                <div class="col-sm-12 text-info"> &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
                             <!-- USDOD Clearance: -->
                             <div class="form-group col-sm-12 ">
                                 <label for="usdod"> USDOD Clearance: </label>
@@ -146,20 +130,36 @@
                                     </option>
                                 </select>
                             </div>
+                        </div>
 
-                            <!--Additional info textarea-->
-                            <div class="form-group col-sm-12 ">
-                                <label>Additional Info</label>
-                                <div class="form-group">
-                                    <textarea
-                                            class="form-control {{ $errors->has('additional_info') ? 'has-error' : ''}}"
-                                            name="additional_info" style="background-color: transparent"
-                                            placeholder="401k, equity, stock purchase plan, bonus, pto, healthcare">{{old('additional_info', $additional_info)}}</textarea>
-                                </div>
-                                @if($errors->has('additional_info')) <p
-                                        class="text-danger">{{$errors->first('additional_info')}} </p> @endif
+                        <div class="col-sm-6">
+                            <div class="col-sm-12">
+                                <label> Location preferences - you can add more then one city </label>
                             </div>
 
+                            <div class="col-sm-8">
+                                <div id="locationPreferencesDiv">
+                                    <div class="typeahead__container">
+                                        <div class="typeahead__field">
+                                            <span class="typeahead__query">
+                                                <input class="js-typeahead-city {{ $errors->has('locations.0') ? 'has-error' : ''}}"
+                                                       name="locations[]" type="search"
+                                                       placeholder="Search" autocomplete="off"
+                                                       @if (isset($userLocation[0])) value="{{old('locations.0', $userLocation[0])}}"
+                                                       @else value="{{old('locations.0')}}"@endif>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="addCityInputBtn">
+                                    <span class="btn btn-primary btn-circle">+</span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" id='delIconForCityDiv'>
+                                <div class="col-sm-12 text-info"> &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                            </div>
                             <div class="form-group col-sm-12 ">
                                 <label for="searching_status"> Where are you in your job search </label>
                                 <select id="searching_status" name="searching_status" class="form-control">
@@ -190,29 +190,33 @@
                                 @if($errors->has('date_available')) <p
                                         class="text-danger">{{$errors->first('date_available')}} </p> @endif
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            
+
+                            <!-- Additional info textarea-->
+                            <div class="form-group col-sm-12 ">
+                                <label>Additional Info</label>
+                                <div class="form-group">
+                                    <textarea
+                                            class="form-control {{ $errors->has('additional_info') ? 'has-error' : ''}}"
+                                            name="additional_info" style="background-color: transparent"
+                                            placeholder="401k, equity, stock purchase plan, bonus, pto, healthcare">{{old('additional_info', $additional_info)}}</textarea>
+                                </div>
+                                @if($errors->has('additional_info')) <p
+                                        class="text-danger">{{$errors->first('additional_info')}} </p> @endif
+                            </div>
+
+                            
 
 
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="form-group col-sm-12 ">
-                                <label> Require sponsorship now or future (H1-B Visa Status) </label>
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn active">
-                                        <input type="radio" name='require_sponsorship' value=1 checked
-                                               @if (old('require_sponsorship', $require_sponsorship) == '1') checked @endif>
-                                        <i class="fa fa-circle-o fa-2x"></i>
-                                        <i class="fa fa-dot-circle-o fa-2x"></i>
-                                        <span> Yes </span>
-                                    </label>
-                                    <label class="btn">
-                                        <input type="radio" name='require_sponsorship' value=0
-                                               @if (old('require_sponsorship', $require_sponsorship) == '0') checked @endif>
-                                        <i class="fa fa-circle-o fa-2x"></i>
-                                        <i class="fa fa-dot-circle-o fa-2x"></i>
-                                        <span> No </span>
-                                    </label>
-                                </div>
+                            
                             </div>
 
                             <!--Current Compensation-->
@@ -261,7 +265,7 @@
 
                             <div class="form-group col-sm-12 ">
                                 <label> Targeted Compensation
-                                    <small class="text-muted">(optional)</small>
+                                    <!-- <small class="text-muted">(optional)</small> -->
                                 </label>
 
                                 <div class="input-group col-sm-7">
