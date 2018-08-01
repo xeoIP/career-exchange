@@ -24,28 +24,10 @@
                             <!-- Employment type-->
                             <div class="form-group col-sm-12">
                                 <label> What type of employment </label>
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn active">
-                                        <input type="radio" name='employment_type' value="Permanent" checked
-                                               @if (old('employment_type',$employment_type) == 'Permanent') checked @endif >
-                                        <i class="fa fa-circle-o fa-2x"></i>
-                                        <i class="fa fa-dot-circle-o fa-2x"></i>
-                                        <span> Permanent </span>
-                                    </label>
-                                    <label class="btn">
-                                        <input type="radio" name='employment_type' value="Contract"
-                                               @if (old('employment_type', $employment_type) == 'Contract') checked @endif >
-                                        <i class="fa fa-circle-o fa-2x"></i>
-                                        <i class="fa fa-dot-circle-o fa-2x"></i>
-                                        <span> Contract </span>
-                                    </label>
-                                    <label class="btn">
-                                        <input type="radio" name='employment_type' value="Intern"
-                                               @if (old('employment_type', $employment_type) == 'Intern') checked @endif >
-                                        <i class="fa fa-circle-o fa-2x"></i>
-                                        <i class="fa fa-dot-circle-o fa-2x"></i>
-                                        <span> Intern </span>
-                                    </label>
+                                <div>
+                                     <input type="checkbox" name="employment_type" value="Permanent">   Permanent<br />
+                                     <input type="checkbox" name="employment_type" value="Contract">  Contract<br />
+                                     <input type="checkbox" name="employment_type" value="Intern">  Intern<br />
                                 </div>
                             </div>
 
@@ -197,7 +179,7 @@
                         <div class="col-sm-6">
                             
 
-                            <!-- Additional info textarea-->
+                            <!-- Additional info textarea
                             <div class="form-group col-sm-12 ">
                                 <label>Additional Info</label>
                                 <div class="form-group">
@@ -208,7 +190,7 @@
                                 </div>
                                 @if($errors->has('additional_info')) <p
                                         class="text-danger">{{$errors->first('additional_info')}} </p> @endif
-                            </div>
+                            </div> -->
 
                             
 
