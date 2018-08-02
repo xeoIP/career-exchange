@@ -44,7 +44,7 @@ if ( $pageRoute->uri == "/" ) {
                         <!-- Logo -->
                             <div id="logo">
                                 <h1><a href="{{ lurl('/') }}">
-                                        <img src="/images/logo-2.png"
+                                        <img src="/images/cex.svg" width="250"
                                              alt="{{ strtolower(config('settings.app_name')) }}" class="tooltipHere"
                                              title="" data-placement="bottom"
                                              data-toggle="tooltip" type="button"

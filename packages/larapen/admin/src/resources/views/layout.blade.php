@@ -55,7 +55,7 @@ if (isset($title)) {
           <span class="logo-mini">{!! config('larapen.admin.logo_mini') !!}</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg">
-              <img src="/images/logo-2.png">
+              <img src="/images/cex.svg">
           </span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
