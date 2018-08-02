@@ -179,7 +179,7 @@
                         <div class="col-sm-6">
                             
 
-                            <!-- Additional info textarea
+                             <!--Additional info textarea-->
                             <div class="form-group col-sm-12 ">
                                 <label>Additional Info</label>
                                 <div class="form-group">
@@ -190,7 +190,7 @@
                                 </div>
                                 @if($errors->has('additional_info')) <p
                                         class="text-danger">{{$errors->first('additional_info')}} </p> @endif
-                            </div> -->
+                            </div>
 
                             
 
