@@ -61,13 +61,17 @@ var StepTwo = new function () {
             '<div class="col-sm-12" id="divRoleId' + id + '">' +
             '<label class="col-sm-4">' + label + '</label>' +
             '<select class="form-control select-input btn-mini col-sm-6" id="positionExperience" name="' + roleName + '">' +
-            '<option value="0">0-1 years</option>' +
-            '<option value="1">1-2 years</option>' +
-            '<option value="2">2-4 years</option>' +
-            '<option value="3">4-6 years</option>' +
-            '<option value="4">6-8 years</option>' +
-            '<option value="5">8-10 years</option>' +
-            '<option value="6">10+ years</option>' +
+            '<option value="0">< 1 year</option>' +
+            '<option value="1">1+ years</option>' +
+            '<option value="2">2+ years</option>' +
+            '<option value="3">3+ years</option>' +
+            '<option value="4">4+ years</option>' +
+            '<option value="5">5+ years</option>' +
+            '<option value="6">6+ years</option>' +
+            '<option value="7">7+ years</option>' +
+            '<option value="8">8+ years</option>' +
+            '<option value="9">9+ years</option>' +
+            '<option value="10">10+ years</option>' +
             '</select>' +
             '<hr class="col-sm-5" style="margin-bottom: 1%;">' +
             '</div>' +

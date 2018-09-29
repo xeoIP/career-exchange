@@ -28,9 +28,9 @@
                         <input type="text" name="phone_number" value="{{ old('phone_number', $phone) }}" class="form-control {{ $errors->has('phone_number') ? 'has-error' : ''}}">
                         @if($errors->has('phone_number')) <p class="text-danger">{{$errors->first('phone_number')}} </p> @endif
 
-                        <label>Social Security:</label>
+                        <!-- <label>Social Security:</label>
                         <input type="text" name="social_security" value="{{ old('social_security', $social_security) }}"  class="form-control {{ $errors->has('social_security') ? 'has-error' : ''}}">
-                        @if($errors->has('social_security')) <p class="text-danger">{{$errors->first('social_security')}} </p> @endif
+                        @if($errors->has('social_security')) <p class="text-danger">{{$errors->first('social_security')}} </p> @endif -->
 
                     </div>
 

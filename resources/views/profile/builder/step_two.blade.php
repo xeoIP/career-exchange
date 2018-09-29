@@ -56,13 +56,17 @@
 
                                     <div class="col-sm-3">
                                         <select id="experienceDropDownId1" name="skill_{{$skillCount}}[]" class="form-control">
-                                            <option value="0" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 0) selected="selected" @endif> 0-1 years</option>
-                                            <option value="1" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 1) selected="selected" @endif> 1-2 years</option>
-                                            <option value="2" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 2) selected="selected" @endif> 2-4 years</option>
-                                            <option value="3" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 3) selected="selected" @endif> 4-6 years</option>
-                                            <option value="4" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 4) selected="selected" @endif> 6-8 years</option>
-                                            <option value="5" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 5) selected="selected" @endif> 8-10 years</option>
-                                            <option value="6" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 6) selected="selected" @endif> 10+ years</option>
+                                            <option value="0" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 0) selected="selected" @endif>< 1 year</option>
+                                            <option value="1" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 1) selected="selected" @endif> 1+ years</option>
+                                            <option value="2" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 2) selected="selected" @endif> 2+ years</option>
+                                            <option value="3" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 3) selected="selected" @endif> 3+ years</option>
+                                            <option value="4" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 4) selected="selected" @endif> 4+ years</option>
+                                            <option value="5" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 5) selected="selected" @endif> 5+ years</option>
+                                            <option value="6" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 6) selected="selected" @endif> 6+ years</option>
+                                            <option value="7" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 7) selected="selected" @endif> 7+ years</option>
+                                            <option value="8" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 8) selected="selected" @endif> 8+ years</option>
+                                            <option value="9" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 9) selected="selected" @endif> 9+ years</option>
+                                            <option value="10" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 10) selected="selected" @endif> 10+ years</option>
                                         </select>
                                     </div>
 
@@ -87,13 +91,17 @@
 
                             <div class="col-sm-3">
                                 <select id="experienceDropDownId1" name="additional_skill_1[]"  class="experienceDropDown form-control">
-                                    <option value="0" @if (isset($additionalSkills[0]) && $additionalSkills[0][1] == 0) selected="selected" @endif> 0-1 years</option>
-                                    <option value="1" @if (isset($additionalSkills[0]) && $additionalSkills[0][1] == 1) selected="selected" @endif> 1-2 years</option>
-                                    <option value="2" @if (isset($additionalSkills[0]) && $additionalSkills[0][1] == 2) selected="selected" @endif> 2-4 years</option>
-                                    <option value="3" @if (isset($additionalSkills[0]) && $additionalSkills[0][1] == 3) selected="selected" @endif> 4-6 years</option>
-                                    <option value="4" @if (isset($additionalSkills[0]) && $additionalSkills[0][1] == 4) selected="selected" @endif> 6-8 years</option>
-                                    <option value="5" @if (isset($additionalSkills[0]) && $additionalSkills[0][1] == 5) selected="selected" @endif> 8-10 years</option>
-                                    <option value="6" @if (isset($additionalSkills[0]) && $additionalSkills[0][1] == 6) selected="selected" @endif> 10+ years</option>
+                                    <option value="0" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 0) selected="selected" @endif>< 1 year</option>
+                                    <option value="1" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 1) selected="selected" @endif> 1+ years</option>
+                                    <option value="2" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 2) selected="selected" @endif> 2+ years</option>
+                                    <option value="3" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 3) selected="selected" @endif> 3+ years</option>
+                                    <option value="4" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 4) selected="selected" @endif> 4+ years</option>
+                                    <option value="5" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 5) selected="selected" @endif> 5+ years</option>
+                                    <option value="6" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 6) selected="selected" @endif> 6+ years</option>
+                                    <option value="7" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 7) selected="selected" @endif> 7+ years</option>
+                                    <option value="8" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 8) selected="selected" @endif> 8+ years</option>
+                                    <option value="9" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 9) selected="selected" @endif> 9+ years</option>
+                                    <option value="10" @if (isset($skills[$skillCount-1]) && $skills[$skillCount-1][1] == 10) selected="selected" @endif> 10+ years</option>
                                 </select>
                             </div>
 
