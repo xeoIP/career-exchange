@@ -16,13 +16,11 @@
                     @endif
                     <div class="resumes-list-content">
                         <h4>{{ $user->name }} <span>{{$position!= null ? $position : ''}}</span></h4>
-                        <span>{{$additionalInfo != null ? $additionalInfo : ''}}</span>
+                        
                         <span class="icons"><i class="fa fa-map-marker"></i>{{$user_city}}
                             , {{  $user_city_code }}</span>
-                        <span class="icons"><a href="{{$website != null ? $website : '#'}}"><i
-                                        class="fa fa-link"></i> Website</a></span>
-                        <span class="icons"><a href="mailto:{{$email}}"><i
-                                        class="fa fa-envelope"></i> {{$email}} </a></span>
+                        <span class="icons"><i class="fa fa-phone"></i> {{$user->phone}} </a></span>
+                        <span class="icons"><a href="mailto:{{$email}}"><i class="fa fa-envelope"></i> {{$email}} </a></span>
                         <div class="skills">
                             @if($skills != null)
                                 @foreach($skills as $skill)

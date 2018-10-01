@@ -174,29 +174,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            
-
-                             <!--Additional info textarea-->
-                            <div class="form-group col-sm-12 ">
-                                <label>Additional Info</label>
-                                <div class="form-group">
-                                    <textarea
-                                            class="form-control {{ $errors->has('additional_info') ? 'has-error' : ''}}"
-                                            name="additional_info" style="background-color: transparent"
-                                            placeholder="401k, equity, stock purchase plan, bonus, pto, healthcare">{{old('additional_info', $additional_info)}}</textarea>
-                                </div>
-                                @if($errors->has('additional_info')) <p
-                                        class="text-danger">{{$errors->first('additional_info')}} </p> @endif
-                            </div>
-
-                            
-
-
-                        </div>
-
                         <div class="col-sm-6">
                             
                             </div>
@@ -270,6 +247,28 @@
                                             class="text-danger">{{$errors->first('target_contract_rate')}} </p> @endif
                                 </div>
                             </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                            
+
+                             <!--Additional info textarea-->
+                            <div class="form-group col-sm-12 ">
+                                <label>Additional Info</label>
+                                <div class="form-group">
+                                    <textarea
+                                            class="form-control {{ $errors->has('additional_info') ? 'has-error' : ''}}"
+                                            name="additional_info" style="background-color: transparent"
+                                            placeholder="401k, equity, stock purchase plan, bonus, pto, healthcare">{{old('additional_info', $additional_info)}}</textarea>
+                                </div>
+                                @if($errors->has('additional_info')) <p
+                                        class="text-danger">{{$errors->first('additional_info')}} </p> @endif
+                            </div>
+
+                            
+
+
+                        </div>
 
                         </div>
                     </div>
